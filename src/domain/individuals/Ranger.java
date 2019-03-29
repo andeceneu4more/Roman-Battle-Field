@@ -1,15 +1,25 @@
 package domain.individuals;
 
+import tools.Defaults;
+
 public class Ranger extends Soldier
 {
-    protected float survivalRate;
+    protected double survivalRate;
     protected int stealth;
 
-    public Ranger(String[] name, String[] origin, int age, int soldierID, int unitID, int commanderID, int health,
-                  int xp, float survivalRate, int stealth)
+    public Ranger()
     {
-        super(name, origin, age, soldierID, unitID, commanderID, health, xp);
+        this.survivalRate = Defaults.survivalRate;
+        this.stealth = Defaults.stealth;
+    }
+
+    public void setSurvivalRate(float survivalRate)
+    {
         this.survivalRate = survivalRate;
+    }
+
+    public void setStealth(int stealth)
+    {
         this.stealth = stealth;
     }
 }

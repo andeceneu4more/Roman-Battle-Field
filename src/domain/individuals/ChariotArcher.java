@@ -1,13 +1,26 @@
 package domain.individuals;
 
+import tools.Defaults;
+
 public class ChariotArcher extends Archer
 {
-    protected float speed;
+    protected double speed;
+    protected double cooldown;
 
-    public ChariotArcher(String[] name, String[] origin, int age, int soldierID, int unitID, int commanderID,
-                         int health, int xp, int rangeDamage, double criticalHitRate, float speed)
+    public ChariotArcher()
     {
-        super(name, origin, age, soldierID, unitID, commanderID, health, xp, rangeDamage, criticalHitRate);
+        super();
+        this.speed = Defaults.chariotSpeed;
+        double cooldown = Defaults.chariotCooldown;
+    }
+
+    public void setSpeed(float speed)
+    {
         this.speed = speed;
+    }
+
+    public void setCooldown(double cooldown)
+    {
+        this.cooldown = cooldown;
     }
 }

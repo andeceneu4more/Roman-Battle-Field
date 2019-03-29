@@ -1,6 +1,6 @@
 package domain.units;
 
-public class RangerUnit
+public class RangerUnit extends Unit
 {
 
 }

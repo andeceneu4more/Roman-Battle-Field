@@ -1,15 +1,26 @@
 package domain.individuals;
 
+import tools.Defaults;
+
 public class LightInfantryman extends Soldier
 {
     protected int swordDamage;
     protected int agility;
 
-    public LightInfantryman(String[] name, String[] origin, int age, int soldierID, int unitID, int commanderID,
-                            int health, int xp, int swordDamage, int agility)
+    public LightInfantryman()
     {
-        super(name, origin, age, soldierID, unitID, commanderID, health, xp);
+        super();
+        this.swordDamage = Defaults.lightDamage;
+        this.agility = Defaults.agility;
+    }
+
+    public void setSwordDamage(int swordDamage)
+    {
         this.swordDamage = swordDamage;
+    }
+
+    public void setAgility(int agility)
+    {
         this.agility = agility;
     }
 }

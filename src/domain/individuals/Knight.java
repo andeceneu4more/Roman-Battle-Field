@@ -1,15 +1,26 @@
 package domain.individuals;
 
+import tools.Defaults;
+
 public class Knight extends Soldier
 {
     protected int swordDamage;
-    protected float speed;
+    protected double speed;
 
-    public Knight(String[] name, String[] origin, int age, int soldierID, int unitID, int commanderID,
-                  int health, int xp, int swordDamage, float speed)
+    public Knight()
     {
-        super(name, origin, age, soldierID, unitID, commanderID, health, xp);
+        super();
+        this.swordDamage = Defaults.knightDamage;
+        this.speed = Defaults.knightSpeed;
+    }
+
+    public void setSwordDamage(int swordDamage)
+    {
         this.swordDamage = swordDamage;
+    }
+
+    public void setSpeed(float speed)
+    {
         this.speed = speed;
     }
 }

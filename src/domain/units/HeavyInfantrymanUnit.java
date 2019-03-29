@@ -1,6 +1,6 @@
 package domain.units;
 
-public class HeavyInfantrymanUnit
+public class HeavyInfantrymanUnit extends Unit
 {
 
 }

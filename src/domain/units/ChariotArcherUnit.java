@@ -1,6 +1,6 @@
 package domain.units;
 
-public class ChariotArcherUnit
+public class ChariotArcherUnit extends Unit
 {
 
 }
