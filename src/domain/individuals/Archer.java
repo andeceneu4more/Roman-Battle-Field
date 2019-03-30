@@ -40,9 +40,8 @@ public class Archer extends Soldier
 
     public double archerRating()
     {
-        double rating = criticalHitRate * Defaults.standardTime + (1 - criticalHitRate) * rangeDamage;
-        double ageRatio = (1 + ((age - Defaults.minimumAge) / (Defaults.maximumAge - Defaults.minimumAge)));
-        rating = ageRatio * rating;
+        double rating = criticalHitRate * Defaults.standardTime + (1 - criticalHitRate) *
+                Defaults.standardTime * rangeDamage;
         double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
         rating = xpRatio * rating;
         return rating;

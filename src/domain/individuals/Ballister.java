@@ -28,8 +28,6 @@ public class Ballister extends Soldier
     public double ballisterRating()
     {
         double rating = watchfullness;
-        double ageRatio = (1 + ((age - Defaults.minimumAge) / (Defaults.maximumAge - Defaults.minimumAge)));
-        rating = ageRatio * rating;
         double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
         rating = xpRatio * rating;
         return rating;
