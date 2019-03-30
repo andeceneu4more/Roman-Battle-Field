@@ -25,9 +25,9 @@ public interface Defaults
     public static double criticalHitRate = 0.2;
 
     // ArcherUnit
-    public static double archersRangedRatio = 0.025;
-    public static double archersMeleeRatio = 0.016;
-    public static double archersDamageRatio = 0.05;
+    public static double archersRangedRatio = 0.00035;
+    public static double archersMeleeRatio = 0.0005;
+    public static double archersDamageRatio = 0.0005;
 
     // Ballister
     public static int watchfullness = 65;
@@ -42,7 +42,12 @@ public interface Defaults
 
     // ChariotArcher
     public static double chariotSpeed = 15;
-    public static int chariotCooldown = 20;
+    public static int chariotCooldown = 60;
+
+    // ChariotArcherUnit
+    public static double chariotRangedRatio = 0.02;
+    public static double chariotMeleeRatio = 0.003;
+    public static double chariotDamageRatio = 0.025;
 
     // Knight
     public static double knightSpeed = 70;

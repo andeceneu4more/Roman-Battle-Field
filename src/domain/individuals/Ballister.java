@@ -33,4 +33,8 @@ public class Ballister extends Soldier
         return rating;
     }
 
+    public void setWatchfullness(int watchfullness)
+    {
+        this.watchfullness = watchfullness;
+    }
 }

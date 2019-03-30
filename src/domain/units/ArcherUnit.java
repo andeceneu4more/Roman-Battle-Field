@@ -8,7 +8,6 @@ import tools.Defaults;
 
 public class ArcherUnit extends Unit
 {
-    private int unitID;
     private Vector <Archer> formation;
 
     public ArcherUnit(Commander Captain)

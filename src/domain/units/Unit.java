@@ -9,6 +9,7 @@ public abstract class Unit
     protected long rangedStrength;
     protected double damage;
     protected Commander commander;
+    protected int unitID;
 
     public void printAtributes()
     {

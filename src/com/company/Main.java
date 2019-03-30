@@ -2,9 +2,11 @@ package com.company;
 
 import domain.individuals.Archer;
 import domain.individuals.Ballister;
+import domain.individuals.ChariotArcher;
 import domain.individuals.Commander;
 import domain.units.ArcherUnit;
 import domain.units.Ballista;
+import domain.units.ChariotArcherUnit;
 
 public class Main
 {
@@ -22,5 +24,11 @@ public class Main
         ballisterUnit.addBallister();
         ballisterUnit.unitRating();
         ballisterUnit.printAtributes();
+
+        ChariotArcherUnit chariots = new ChariotArcherUnit(Achiles);
+        chariots.addChariotArcher();
+        chariots.addChariotArcher();
+        chariots.unitRating();
+        chariots.printAtributes();
     }
 }

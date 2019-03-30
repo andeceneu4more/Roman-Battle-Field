@@ -9,7 +9,6 @@ import java.util.Vector;
 public class Ballista extends Unit
 {
     private double cooldown;
-    private int unitID;
     private Vector <Ballister> formation;
 
     public Ballista(Commander Captain)
