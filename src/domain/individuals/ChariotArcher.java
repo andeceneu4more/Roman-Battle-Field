@@ -24,7 +24,7 @@ public class ChariotArcher extends Archer
         this.cooldown = cooldown;
     }
 
-    public void printChariotArcher()
+    public void printSoldier()
     {
         System.out.println(name);
         System.out.println(origin);
@@ -40,7 +40,7 @@ public class ChariotArcher extends Archer
         System.out.println(cooldown);
     }
 
-    public double chariotArcherRating()
+    public double rating()
     {
         double turn = Defaults.standardTime / cooldown;
         double rating = criticalHitRate * turn + (1 - criticalHitRate) * turn * (rangeDamage + speed);

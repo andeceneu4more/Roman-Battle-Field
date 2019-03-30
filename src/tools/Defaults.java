@@ -61,6 +61,11 @@ public interface Defaults
     public static int heavyDamage = 70;
     public static int armour = 50;
 
+    // HeavyInfantryman
+    public static double heavyRangedRatio = 0.001;
+    public static double heavyMeleeRatio = 0.001;
+    public static double heavyDamageRatio = 0.001;
+
     // Ranger
     public static double survivalRate = 0.3;
     public static int stealth = 25;

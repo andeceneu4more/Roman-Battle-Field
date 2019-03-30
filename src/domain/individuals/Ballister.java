@@ -12,7 +12,12 @@ public class Ballister extends Soldier
         this.watchfullness = Defaults.watchfullness;
     }
 
-    public void printBallister()
+    public void setWatchfullness(int watchfullness)
+    {
+        this.watchfullness = watchfullness;
+    }
+
+    public void printSoldier()
     {
         System.out.println(name);
         System.out.println(origin);
@@ -25,7 +30,7 @@ public class Ballister extends Soldier
         System.out.println(watchfullness);
     }
 
-    public double ballisterRating()
+    public double rating()
     {
         double rating = watchfullness;
         double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
@@ -33,8 +38,5 @@ public class Ballister extends Soldier
         return rating;
     }
 
-    public void setWatchfullness(int watchfullness)
-    {
-        this.watchfullness = watchfullness;
-    }
+
 }

@@ -17,7 +17,7 @@ public class ChariotArcherUnit extends Unit
         commander = Captain;
     }
 
-    public void addChariotArcher()
+    public void addSoldier()
     {
         ChariotArcher element = new ChariotArcher();
         // read element
@@ -30,20 +30,20 @@ public class ChariotArcherUnit extends Unit
     {
         for (int i = 0; i < formation.size(); i++)
         {
-            formation.elementAt(i).printChariotArcher();
+            formation.elementAt(i).printSoldier();
         }
     }
-    public void unitRating()
+    public void rating()
     {
         double rating = 0;
         for (int i = 0; i < formation.size(); i++)
         {
-            rating += formation.elementAt(i).chariotArcherRating();
+            rating += formation.elementAt(i).rating();
         }
-        double commanderRation = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
+        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
                 (Defaults.maximumAbilities - Defaults.minimumAbilities)));
 
-        rating = commanderRation * rating;
+        rating = commanderRatio * rating;
         rangedStrength = Math.round(Defaults.chariotRangedRatio * rating);
         meleeStrength = Math.round(Defaults.chariotMeleeRatio * rating);
         damage = Defaults.chariotDamageRatio * rating;

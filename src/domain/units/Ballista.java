@@ -19,7 +19,7 @@ public class Ballista extends Unit
         commander = Captain;
     }
 
-    public void addBallister()
+    public void addSoldier()
     {
         Ballister element = new Ballister();
         // read element
@@ -32,15 +32,15 @@ public class Ballista extends Unit
     {
         for (int i = 0; i < formation.size(); i++)
         {
-            formation.elementAt(i).printBallister();
+            formation.elementAt(i).printSoldier();
         }
     }
-    public void unitRating()
+    public void rating()
     {
         double rating = 0;
         for (int i = 0; i < formation.size(); i++)
         {
-            rating += formation.elementAt(i).ballisterRating();
+            rating += formation.elementAt(i).rating();
         }
         rating = rating / formation.size();
         double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /

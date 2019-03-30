@@ -7,6 +7,7 @@ import domain.individuals.Commander;
 import domain.units.ArcherUnit;
 import domain.units.Ballista;
 import domain.units.ChariotArcherUnit;
+import domain.units.HeavyInfantrymanUnit;
 
 public class Main
 {
@@ -14,21 +15,27 @@ public class Main
     {
         Commander Achiles = new Commander();
         ArcherUnit myUnit = new ArcherUnit(Achiles);
-        myUnit.addArcher();
-        myUnit.addArcher();
-        myUnit.unitRating();
+        myUnit.addSoldier();
+        myUnit.addSoldier();
+        myUnit.rating();
         myUnit.printAtributes();
 
         Ballista ballisterUnit = new Ballista(Achiles);
-        ballisterUnit.addBallister();
-        ballisterUnit.addBallister();
-        ballisterUnit.unitRating();
+        ballisterUnit.addSoldier();
+        ballisterUnit.addSoldier();
+        ballisterUnit.addSoldier();
         ballisterUnit.printAtributes();
 
         ChariotArcherUnit chariots = new ChariotArcherUnit(Achiles);
-        chariots.addChariotArcher();
-        chariots.addChariotArcher();
-        chariots.unitRating();
+        chariots.addSoldier();
+        chariots.addSoldier();
+        chariots.rating();
         chariots.printAtributes();
+
+        HeavyInfantrymanUnit legion = new HeavyInfantrymanUnit(Achiles);
+        legion.addSoldier();
+        legion.addSoldier();
+        legion.rating();
+        legion.printAtributes();
     }
 }

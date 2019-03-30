@@ -2,7 +2,7 @@ package domain.individuals;
 
 import tools.Defaults;
 
-public class Soldier
+public abstract class Soldier
 {
     protected  static int generalSoldierID = 0;
     protected  String name, origin;
@@ -64,4 +64,6 @@ public class Soldier
     {
         return soldierID;
     }
+
+    public abstract void printSoldier();
 }

@@ -24,7 +24,7 @@ public class Archer extends Soldier
         this.criticalHitRate = criticalHitRate;
     }
 
-    public void printArcher()
+    public void printSoldier()
     {
         System.out.println(name);
         System.out.println(origin);
@@ -38,7 +38,7 @@ public class Archer extends Soldier
         System.out.println(criticalHitRate);
     }
 
-    public double archerRating()
+    public double rating()
     {
         double rating = criticalHitRate * Defaults.standardTime + (1 - criticalHitRate) *
                 Defaults.standardTime * rangeDamage;

@@ -17,4 +17,8 @@ public abstract class Unit
         System.out.println(rangedStrength);
         System.out.println(damage);
     }
+    public abstract void addSoldier();
+    public abstract void rating();
+    public abstract void printUnit();
+
 }

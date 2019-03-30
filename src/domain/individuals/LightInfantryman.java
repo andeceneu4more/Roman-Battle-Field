@@ -23,4 +23,18 @@ public class LightInfantryman extends Soldier
     {
         this.agility = agility;
     }
+
+    public void printSoldier()
+    {
+        System.out.println(name);
+        System.out.println(origin);
+        System.out.println(age);
+        System.out.println(soldierID);
+        System.out.println(unitID);
+        System.out.println(commanderID);
+        System.out.println(health);
+        System.out.println(xp);
+        System.out.println(swordDamage);
+        System.out.println(agility);
+    }
 }
