@@ -4,6 +4,7 @@ import java.lang.*;
 import java.util.*;
 import domain.individuals.Archer;
 import domain.individuals.Commander;
+import domain.individuals.Soldier;
 import tools.Defaults;
 
 public class ArcherUnit extends Unit
@@ -12,17 +13,15 @@ public class ArcherUnit extends Unit
 
     public ArcherUnit(Commander Captain)
     {
-        this.unitID = ++generalUnitID;
+        this.unitId = ++generalUnitId;
         this.formation = new Vector();
         commander = Captain;
     }
 
-    public void addSoldier()
+    public void addSoldier(Archer element)
     {
-        Archer element = new Archer();
-        // read element
-        element.setUnitID(unitID);
-        element.setCommanderID(commander.getSoldierID());
+        element.setUnitId(unitId);
+        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -48,5 +47,22 @@ public class ArcherUnit extends Unit
         rangedStrength = Math.round(Defaults.ARCHERS_RANGED_RATIO * rating);
         meleeStrength = Math.round(Defaults.ARCHERS_MELEE_RATIO * rating);
         damage = Defaults.ARCHERS_DAMAGE_RATIO * rating;
+    }
+
+    public Soldier getSoldierById(int id)
+    {
+        if (commander.getSoldierId() == id)
+            return commander;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            if (formation.elementAt(i).getSoldierId() == id)
+                return formation.elementAt(i);
+        }
+        return null;
+    }
+
+    public int getSoldierNumber()
+    {
+        return formation.size();
     }
 }

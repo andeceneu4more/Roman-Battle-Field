@@ -2,6 +2,7 @@ package domain.units;
 
 import domain.individuals.Commander;
 import domain.individuals.LightInfantryman;
+import domain.individuals.Soldier;
 import tools.Defaults;
 
 import java.util.Vector;
@@ -12,17 +13,15 @@ public class LightInfantrymanUnit extends Unit
 
     public LightInfantrymanUnit(Commander Captain)
     {
-        this.unitID = ++generalUnitID;
+        this.unitId = ++generalUnitId;
         this.formation = new Vector();
         commander = Captain;
     }
 
-    public void addSoldier()
+    public void addSoldier(LightInfantryman element)
     {
-        LightInfantryman element = new LightInfantryman();
-        // read element
-        element.setUnitID(unitID);
-        element.setCommanderID(commander.getSoldierID());
+        element.setUnitId(unitId);
+        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -50,5 +49,22 @@ public class LightInfantrymanUnit extends Unit
         rangedStrength = Math.round(Defaults.LIGHT_RANGED_RATIO * commanderRatio * meleeStrength);
         meleeStrength = Math.round(Defaults.LIGHT_MELEE_RATIO * commanderRatio * meleeStrength);
         damage = Defaults.LIGHT_DAMAGE_RATIO * commanderRatio * damage;
+    }
+
+    public Soldier getSoldierById(int id)
+    {
+        if (commander.getSoldierId() == id)
+            return commander;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            if (formation.elementAt(i).getSoldierId() == id)
+                return formation.elementAt(i);
+        }
+        return null;
+    }
+
+    public int getSoldierNumber()
+    {
+        return formation.size();
     }
 }

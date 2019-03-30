@@ -5,17 +5,16 @@ import tools.Defaults;
 public abstract class Soldier
 {
     protected  static int generalSoldierID = 0;
-    protected  String name, origin;
+    protected  String name;
     protected int age;
-    protected int soldierID, unitID, commanderID;
+    protected int soldierId, unitId, commanderId;
     protected int health, xp;
 
     public Soldier()
     {
         this.name = Defaults.NAME;
-        this.origin = Defaults.ORIGIN;
         this.age = Defaults.MINIMUM_AGE;
-        this.soldierID = ++generalSoldierID;
+        this.soldierId = ++generalSoldierID;
         this.health = Defaults.HEALTH;
         this.xp = Defaults.MINIMUM_XP;
     }
@@ -25,29 +24,20 @@ public abstract class Soldier
         this.name = name;
     }
 
-    public void setOrigin(String origin)
-    {
-        this.origin = origin;
-    }
-
     public void setAge(int age)
     {
         this.age = age;
     }
 
-    public void setSoldierID(int soldierID)
+
+    public void setUnitId(int unitId)
     {
-        this.soldierID = soldierID;
+        this.unitId = unitId;
     }
 
-    public void setUnitID(int unitID)
+    public void setCommanderId(int commanderId)
     {
-        this.unitID = unitID;
-    }
-
-    public void setCommanderID(int commanderID)
-    {
-        this.commanderID = commanderID;
+        this.commanderId = commanderId;
     }
 
     public void setHealth(int health)
@@ -60,9 +50,9 @@ public abstract class Soldier
         this.xp = xp;
     }
 
-    public int getSoldierID()
+    public int getSoldierId()
     {
-        return soldierID;
+        return soldierId;
     }
 
     public abstract void printSoldier();

@@ -54,35 +54,35 @@ public interface Defaults
     public static final int KNIGHT_DAMAGE = 25;
 
     // Knight Unit
-    public static final double KNIGHT_RANGED_RATIO = 0.001;
-    public static final double KNIGHT_MELEE_RATIO = 0.001;
-    public static final double KNIGHT_DAMAGE_RATIO = 0.001;
+    public static final double KNIGHT_RANGED_RATIO = 0.38;
+    public static final double KNIGHT_MELEE_RATIO = 0.25;
+    public static final double KNIGHT_DAMAGE_RATIO = 0.25;
 
     // LightInfantryman
     public static final int LIGHT_DAMAGE = 40;
     public static final int AGILITY = 35;
 
     // LightInfantrymanUnit
-    public static final double LIGHT_RANGED_RATIO = 0.001;
-    public static final double LIGHT_MELEE_RATIO = 0.001;
-    public static final double LIGHT_DAMAGE_RATIO = 0.001;
+    public static final double LIGHT_RANGED_RATIO = 0.8;
+    public static final double LIGHT_MELEE_RATIO = 0.7;
+    public static final double LIGHT_DAMAGE_RATIO = 0.42;
 
     // HeavyInfantryman
     public static final int HEAVY_DAMAGE = 70;
     public static final int ARMOUR = 50;
 
     // HeavyInfantrymanUnit
-    public static final double HEAVY_RANGED_RATIO = 0.001;
-    public static final double HEAVY_MELEE_RATIO = 0.001;
-    public static final double HEAVY_DAMAGE_RATIO = 0.001;
+    public static final double HEAVY_RANGED_RATIO = 0.9;
+    public static final double HEAVY_MELEE_RATIO = 1.2;
+    public static final double HEAVY_DAMAGE_RATIO = 0.5;
 
     // Ranger
     public static final double SURVIVAL_RATE = 0.3;
     public static final int STEALTH = 25;
 
     // RangerUnit
-    public static final double RANGER_RANGED_RATIO = 0.001;
-    public static final double RANGER_MELEE_RATIO = 0.001;
-    public static final double RANGER_DAMAGE_RATIO = 0.001;
+    public static final double RANGER_RANGED_RATIO = 0.00056;
+    public static final double RANGER_MELEE_RATIO = 0.0005;
+    public static final double RANGER_DAMAGE_RATIO = 0.0008;
 
 }

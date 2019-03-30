@@ -19,7 +19,7 @@ public class Knight extends Soldier
         this.swordDamage = swordDamage;
     }
 
-    public void setSpeed(float speed)
+    public void setSpeed(double speed)
     {
         this.speed = speed;
     }
@@ -27,11 +27,10 @@ public class Knight extends Soldier
     public void printSoldier()
     {
         System.out.println(name);
-        System.out.println(origin);
         System.out.println(age);
-        System.out.println(soldierID);
-        System.out.println(unitID);
-        System.out.println(commanderID);
+        System.out.println(soldierId);
+        System.out.println(unitId);
+        System.out.println(commanderId);
         System.out.println(health);
         System.out.println(xp);
         System.out.println(swordDamage);

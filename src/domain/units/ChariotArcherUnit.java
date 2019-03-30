@@ -2,6 +2,7 @@ package domain.units;
 
 import domain.individuals.ChariotArcher;
 import domain.individuals.Commander;
+import domain.individuals.Soldier;
 import tools.Defaults;
 
 import java.util.Vector;
@@ -12,17 +13,15 @@ public class ChariotArcherUnit extends Unit
 
     public ChariotArcherUnit(Commander Captain)
     {
-        this.unitID = ++generalUnitID;
+        this.unitId = ++generalUnitId;
         this.formation = new Vector();
         commander = Captain;
     }
 
-    public void addSoldier()
+    public void addSoldier(ChariotArcher element)
     {
-        ChariotArcher element = new ChariotArcher();
-        // read element
-        element.setUnitID(unitID);
-        element.setCommanderID(commander.getSoldierID());
+        element.setUnitId(unitId);
+        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -47,6 +46,23 @@ public class ChariotArcherUnit extends Unit
         rangedStrength = Math.round(Defaults.CHARIOT_RANGED_RATIO * rating);
         meleeStrength = Math.round(Defaults.CHARIOT_MELEE_RATIO * rating);
         damage = Defaults.CHARIOT_DAMAGE_RATIO * rating;
+    }
+
+    public Soldier getSoldierById(int id)
+    {
+        if (commander.getSoldierId() == id)
+            return commander;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            if (formation.elementAt(i).getSoldierId() == id)
+                return formation.elementAt(i);
+        }
+        return null;
+    }
+
+    public int getSoldierNumber()
+    {
+        return formation.size();
     }
 }
 

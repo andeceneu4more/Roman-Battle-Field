@@ -2,6 +2,7 @@ package domain.units;
 
 import domain.individuals.Ballister;
 import domain.individuals.Commander;
+import domain.individuals.Soldier;
 import tools.Defaults;
 
 import java.util.Vector;
@@ -13,18 +14,21 @@ public class Ballista extends Unit
 
     public Ballista(Commander Captain)
     {
-        this.unitID = ++generalUnitID;
+        this.unitId = ++generalUnitId;
         this.formation = new Vector();
         this.cooldown = Defaults.COOLDOWN;
         commander = Captain;
     }
 
-    public void addSoldier()
+    public void setCooldown(double cooldown)
     {
-        Ballister element = new Ballister();
-        // read element
-        element.setUnitID(unitID);
-        element.setCommanderID(commander.getSoldierID());
+        this.cooldown = cooldown;
+    }
+
+    public void addSoldier(Ballister element)
+    {
+        element.setUnitId(unitId);
+        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -52,5 +56,22 @@ public class Ballista extends Unit
         meleeStrength = Math.round(Defaults.BALLISTERS_MELEE_RATIO * rating);
         damage = (Defaults.BALLISTERS_DAMAGE_RATIO * rating) *
                 Math.floor(Defaults.STANDARD_TIME / cooldown);
+    }
+
+    public Soldier getSoldierById(int id)
+    {
+        if (commander.getSoldierId() == id)
+            return commander;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            if (formation.elementAt(i).getSoldierId() == id)
+                return formation.elementAt(i);
+        }
+        return null;
+    }
+
+    public int getSoldierNumber()
+    {
+        return formation.size();
     }
 }

@@ -2,6 +2,7 @@ package domain.units;
 
 import domain.individuals.Commander;
 import domain.individuals.Knight;
+import domain.individuals.Soldier;
 import tools.Defaults;
 
 import java.util.Vector;
@@ -12,17 +13,15 @@ public class KnightUnit extends Unit
 
     public KnightUnit(Commander Captain)
     {
-        this.unitID = ++generalUnitID;
+        this.unitId = ++generalUnitId;
         this.formation = new Vector();
         commander = Captain;
     }
 
-    public void addSoldier()
+    public void addSoldier(Knight element)
     {
-        Knight element = new Knight();
-        // read element
-        element.setUnitID(unitID);
-        element.setCommanderID(commander.getSoldierID());
+        element.setUnitId(unitId);
+        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -48,5 +47,22 @@ public class KnightUnit extends Unit
         rangedStrength = Math.round(Defaults.KNIGHT_RANGED_RATIO * commanderRatio * rating);
         meleeStrength = Math.round(Defaults.KNIGHT_MELEE_RATIO * commanderRatio * rating);
         damage = Defaults.KNIGHT_DAMAGE_RATIO * commanderRatio * rating;
+    }
+
+    public Soldier getSoldierById(int id)
+    {
+        if (commander.getSoldierId() == id)
+            return commander;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            if (formation.elementAt(i).getSoldierId() == id)
+                return formation.elementAt(i);
+        }
+        return null;
+    }
+
+    public int getSoldierNumber()
+    {
+        return formation.size();
     }
 }
