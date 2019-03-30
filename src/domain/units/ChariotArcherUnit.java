@@ -40,13 +40,13 @@ public class ChariotArcherUnit extends Unit
         {
             rating += formation.elementAt(i).rating();
         }
-        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
-                (Defaults.maximumAbilities - Defaults.minimumAbilities)));
+        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
+                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
         rating = commanderRatio * rating;
-        rangedStrength = Math.round(Defaults.chariotRangedRatio * rating);
-        meleeStrength = Math.round(Defaults.chariotMeleeRatio * rating);
-        damage = Defaults.chariotDamageRatio * rating;
+        rangedStrength = Math.round(Defaults.CHARIOT_RANGED_RATIO * rating);
+        meleeStrength = Math.round(Defaults.CHARIOT_MELEE_RATIO * rating);
+        damage = Defaults.CHARIOT_DAMAGE_RATIO * rating;
     }
 }
 

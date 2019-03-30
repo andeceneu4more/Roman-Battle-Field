@@ -12,12 +12,12 @@ public abstract class Soldier
 
     public Soldier()
     {
-        this.name = Defaults.name;
-        this.origin = Defaults.origin;
-        this.age = Defaults.minimumAge;
+        this.name = Defaults.NAME;
+        this.origin = Defaults.ORIGIN;
+        this.age = Defaults.MINIMUM_AGE;
         this.soldierID = ++generalSoldierID;
-        this.health = Defaults.health;
-        this.xp = Defaults.minimumXP;
+        this.health = Defaults.HEALTH;
+        this.xp = Defaults.MINIMUM_XP;
     }
 
     public void setName(String name)

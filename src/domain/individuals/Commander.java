@@ -9,7 +9,7 @@ public class Commander extends Soldier
     public Commander()
     {
         super();
-        this.abilities = Defaults.abilities;
+        this.abilities = Defaults.ABILITIES;
     }
 
     public int getAbilities()

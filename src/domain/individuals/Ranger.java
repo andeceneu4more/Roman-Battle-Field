@@ -9,8 +9,8 @@ public class Ranger extends Soldier
 
     public Ranger()
     {
-        this.survivalRate = Defaults.survivalRate;
-        this.stealth = Defaults.stealth;
+        this.survivalRate = Defaults.SURVIVAL_RATE;
+        this.stealth = Defaults.STEALTH;
     }
 
     public void setSurvivalRate(float survivalRate)
@@ -35,5 +35,15 @@ public class Ranger extends Soldier
         System.out.println(xp);
         System.out.println(survivalRate);
         System.out.println(stealth);
+    }
+
+    public double rating()
+    {
+        double rating = survivalRate * Defaults.STANDARD_TIME + (1 - survivalRate) *
+                Defaults.STANDARD_TIME;
+        rating = stealth * rating;
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
+        rating = xpRatio * rating;
+        return rating;
     }
 }

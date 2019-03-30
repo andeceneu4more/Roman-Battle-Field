@@ -28,6 +28,7 @@ public class ArcherUnit extends Unit
 
     public void printUnit()
     {
+        System.out.println("Archer Unit");
         for (int i = 0; i < formation.size(); i++)
         {
             formation.elementAt(i).printSoldier();
@@ -40,12 +41,12 @@ public class ArcherUnit extends Unit
         {
             rating += formation.elementAt(i).rating();
         }
-        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
-                (Defaults.maximumAbilities - Defaults.minimumAbilities)));
+        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
+                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
         rating = commanderRatio * rating;
-        rangedStrength = Math.round(Defaults.archersRangedRatio * rating);
-        meleeStrength = Math.round(Defaults.archersMeleeRatio * rating);
-        damage = Defaults.archersDamageRatio * rating;
+        rangedStrength = Math.round(Defaults.ARCHERS_RANGED_RATIO * rating);
+        meleeStrength = Math.round(Defaults.ARCHERS_MELEE_RATIO * rating);
+        damage = Defaults.ARCHERS_DAMAGE_RATIO * rating;
     }
 }

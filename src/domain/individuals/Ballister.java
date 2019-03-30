@@ -9,7 +9,7 @@ public class Ballister extends Soldier
     public Ballister()
     {
         super();
-        this.watchfullness = Defaults.watchfullness;
+        this.watchfullness = Defaults.WATCHFULLNESS;
     }
 
     public void setWatchfullness(int watchfullness)
@@ -33,7 +33,7 @@ public class Ballister extends Soldier
     public double rating()
     {
         double rating = watchfullness;
-        double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
         rating = xpRatio * rating;
         return rating;
     }

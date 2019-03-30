@@ -27,6 +27,7 @@ public class HeavyInfantrymanUnit extends Unit
 
     public void printUnit()
     {
+        System.out.println("Heavy Infantryman Unit");
         for (int i = 0; i < formation.size(); i++)
         {
             formation.elementAt(i).printSoldier();
@@ -42,11 +43,11 @@ public class HeavyInfantrymanUnit extends Unit
             damage += formation.elementAt(i).damage();
             meleeStrength += formation.elementAt(i).strength();
         }
-        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
-                (Defaults.maximumAbilities - Defaults.minimumAbilities)));
+        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
+                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
-        rangedStrength = Math.round(Defaults.heavyRangedRatio * commanderRatio * meleeStrength);
-        meleeStrength = Math.round(Defaults.heavyMeleeRatio * commanderRatio * meleeStrength);
-        damage = Defaults.heavyDamageRatio * commanderRatio * damage;
+        rangedStrength = Math.round(Defaults.HEAVY_RANGED_RATIO * commanderRatio * meleeStrength);
+        meleeStrength = Math.round(Defaults.HEAVY_MELEE_RATIO * commanderRatio * meleeStrength);
+        damage = Defaults.HEAVY_DAMAGE_RATIO * commanderRatio * damage;
     }
 }

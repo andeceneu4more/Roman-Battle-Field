@@ -6,71 +6,83 @@ import domain.individuals.Commander;
 public interface Defaults
 {
     // Soldier
-    public static String name = "Marcus Antonius";
-    public static String origin = "roman";
-    public static int health = 100;
-    public static double standardTime = 2000;
-    public static int minimumAge = 18;
-    public static int maximumAge = 50;
-    public static int minimumXP = 30;
-    public static int maximumXP = 260;
+    public static final String NAME = "Marcus Antonius";
+    public static final String ORIGIN = "roman";
+    public static final int HEALTH = 100;
+    public static final double STANDARD_TIME = 2000;
+    public static final int MINIMUM_AGE = 18;
+    public static final int MAXIMUM_AGE = 50;
+    public static final int MINIMUM_XP = 30;
+    public static final int MAXIMUM_XP = 260;
 
     // Commander
-    public static int abilities = 85;
-    public static int minimumAbilities = 80;
-    public static int maximumAbilities = 520;
+    public static final int ABILITIES = 85;
+    public static final int MINIMUM_ABILITIES = 80;
+    public static final int MAXIMUM_ABILITIES = 520;
 
     // Archer
-    public static int rangeDamage = 15;
-    public static double criticalHitRate = 0.2;
+    public static final int RANGE_DAMAGE = 15;
+    public static final double CRITICAL_HIT_RATE = 0.2;
 
     // ArcherUnit
-    public static double archersRangedRatio = 0.00035;
-    public static double archersMeleeRatio = 0.0005;
-    public static double archersDamageRatio = 0.0005;
+    public static final double ARCHERS_RANGED_RATIO = 0.00035;
+    public static final double ARCHERS_MELEE_RATIO = 0.0005;
+    public static final double ARCHERS_DAMAGE_RATIO = 0.0005;
 
     // Ballister
-    public static int watchfullness = 65;
-    public static int minimumWatchfullness = 40;
-    public static int maximumWatchfullness = 95;
+    public static final int WATCHFULLNESS = 65;
+    public static final int MINIMUM_WATCHFULLNESS = 40;
+    public static final int MAXIMUM_WATCHFULLNESS = 95;
 
     // Ballista
-    public static double cooldown = 45;
-    public static double ballistersRangedRatio = 0.2;
-    public static double ballistersMeleeRatio = 0.1;
-    public static double ballistersDamageRatio = 0.0265;
+    public static final double COOLDOWN = 45;
+    public static final double BALLISTERS_RANGED_RATIO = 0.2;
+    public static final double BALLISTERS_MELEE_RATIO = 0.1;
+    public static final double BALLISTERS_DAMAGE_RATIO = 0.0265;
 
     // ChariotArcher
-    public static double chariotSpeed = 15;
-    public static int chariotCooldown = 60;
+    public static final double CHARIOT_SPEED = 15;
+    public static final int CHARIOT_COOLDOWN = 60;
 
     // ChariotArcherUnit
-    public static double chariotRangedRatio = 0.02;
-    public static double chariotMeleeRatio = 0.003;
-    public static double chariotDamageRatio = 0.025;
+    public static final double CHARIOT_RANGED_RATIO = 0.02;
+    public static final double CHARIOT_MELEE_RATIO = 0.003;
+    public static final double CHARIOT_DAMAGE_RATIO = 0.025;
 
     // Knight
-    public static double knightSpeed = 70;
-    public static int knightDamage = 25;
+    public static final double KNIGHT_SPEED = 70;
+    public static final int KNIGHT_DAMAGE = 25;
+
+    // Knight Unit
+    public static final double KNIGHT_RANGED_RATIO = 0.001;
+    public static final double KNIGHT_MELEE_RATIO = 0.001;
+    public static final double KNIGHT_DAMAGE_RATIO = 0.001;
 
     // LightInfantryman
-    public static int lightDamage = 40;
-    public static int agility = 35;
+    public static final int LIGHT_DAMAGE = 40;
+    public static final int AGILITY = 35;
+
+    // LightInfantrymanUnit
+    public static final double LIGHT_RANGED_RATIO = 0.001;
+    public static final double LIGHT_MELEE_RATIO = 0.001;
+    public static final double LIGHT_DAMAGE_RATIO = 0.001;
 
     // HeavyInfantryman
-    public static int heavyDamage = 70;
-    public static int armour = 50;
+    public static final int HEAVY_DAMAGE = 70;
+    public static final int ARMOUR = 50;
 
-    // HeavyInfantryman
-    public static double heavyRangedRatio = 0.001;
-    public static double heavyMeleeRatio = 0.001;
-    public static double heavyDamageRatio = 0.001;
+    // HeavyInfantrymanUnit
+    public static final double HEAVY_RANGED_RATIO = 0.001;
+    public static final double HEAVY_MELEE_RATIO = 0.001;
+    public static final double HEAVY_DAMAGE_RATIO = 0.001;
 
     // Ranger
-    public static double survivalRate = 0.3;
-    public static int stealth = 25;
+    public static final double SURVIVAL_RATE = 0.3;
+    public static final int STEALTH = 25;
 
-
-
+    // RangerUnit
+    public static final double RANGER_RANGED_RATIO = 0.001;
+    public static final double RANGER_MELEE_RATIO = 0.001;
+    public static final double RANGER_DAMAGE_RATIO = 0.001;
 
 }

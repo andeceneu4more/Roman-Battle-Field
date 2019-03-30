@@ -10,8 +10,8 @@ public class Knight extends Soldier
     public Knight()
     {
         super();
-        this.swordDamage = Defaults.knightDamage;
-        this.speed = Defaults.knightSpeed;
+        this.swordDamage = Defaults.KNIGHT_DAMAGE;
+        this.speed = Defaults.KNIGHT_SPEED;
     }
 
     public void setSwordDamage(int swordDamage)
@@ -36,5 +36,13 @@ public class Knight extends Soldier
         System.out.println(xp);
         System.out.println(swordDamage);
         System.out.println(speed);
+    }
+
+    public double rating()
+    {
+        double rating = swordDamage + speed;
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
+        rating = xpRatio * rating;
+        return rating;
     }
 }

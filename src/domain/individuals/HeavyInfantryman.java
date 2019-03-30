@@ -10,8 +10,8 @@ public class HeavyInfantryman extends Soldier
     public HeavyInfantryman()
     {
         super();
-        this.swordDamage = Defaults.heavyDamage;
-        this.armour = Defaults.armour;
+        this.swordDamage = Defaults.HEAVY_DAMAGE;
+        this.armour = Defaults.ARMOUR;
     }
 
     public void setSwordDamage(int swordDamage)
@@ -41,14 +41,14 @@ public class HeavyInfantryman extends Soldier
     public double damage()
     {
         double rating = swordDamage;
-        double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
         rating = xpRatio * rating;
         return rating;
     }
     public double strength()
     {
         double rating = armour;
-        double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
         rating = xpRatio * rating;
         return rating;
     }

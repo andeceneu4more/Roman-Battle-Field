@@ -10,8 +10,8 @@ public class Archer extends Soldier
     public Archer()
     {
         super();
-        this.rangeDamage = Defaults.rangeDamage;
-        this.criticalHitRate = Defaults.criticalHitRate;
+        this.rangeDamage = Defaults.RANGE_DAMAGE;
+        this.criticalHitRate = Defaults.CRITICAL_HIT_RATE;
     }
 
     public void setRangeDamage(int rangeDamage)
@@ -40,9 +40,9 @@ public class Archer extends Soldier
 
     public double rating()
     {
-        double rating = criticalHitRate * Defaults.standardTime + (1 - criticalHitRate) *
-                Defaults.standardTime * rangeDamage;
-        double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
+        double rating = criticalHitRate * Defaults.STANDARD_TIME + (1 - criticalHitRate) *
+                Defaults.STANDARD_TIME * rangeDamage;
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
         rating = xpRatio * rating;
         return rating;
     }

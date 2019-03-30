@@ -10,8 +10,8 @@ public class LightInfantryman extends Soldier
     public LightInfantryman()
     {
         super();
-        this.swordDamage = Defaults.lightDamage;
-        this.agility = Defaults.agility;
+        this.swordDamage = Defaults.LIGHT_DAMAGE;
+        this.agility = Defaults.AGILITY;
     }
 
     public void setSwordDamage(int swordDamage)
@@ -36,5 +36,20 @@ public class LightInfantryman extends Soldier
         System.out.println(xp);
         System.out.println(swordDamage);
         System.out.println(agility);
+    }
+
+    public double damage()
+    {
+        double rating = swordDamage;
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
+        rating = xpRatio * rating;
+        return rating;
+    }
+    public double strength()
+    {
+        double rating = agility;
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
+        rating = xpRatio * rating;
+        return rating;
     }
 }

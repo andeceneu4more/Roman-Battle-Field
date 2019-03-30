@@ -10,8 +10,8 @@ public class ChariotArcher extends Archer
     public ChariotArcher()
     {
         super();
-        this.speed = Defaults.chariotSpeed;
-        this.cooldown = Defaults.chariotCooldown;
+        this.speed = Defaults.CHARIOT_SPEED;
+        this.cooldown = Defaults.CHARIOT_COOLDOWN;
     }
 
     public void setSpeed(float speed)
@@ -42,9 +42,9 @@ public class ChariotArcher extends Archer
 
     public double rating()
     {
-        double turn = Defaults.standardTime / cooldown;
+        double turn = Defaults.STANDARD_TIME / cooldown;
         double rating = criticalHitRate * turn + (1 - criticalHitRate) * turn * (rangeDamage + speed);
-        double xpRatio = (1 + ((xp - Defaults.minimumXP) / (Defaults.maximumXP - Defaults.minimumXP)));
+        double xpRatio = (1 + ((xp - Defaults.MINIMUM_XP) / (Defaults.MAXIMUM_XP - Defaults.MINIMUM_XP)));
         rating = xpRatio * rating;
         return rating;
     }

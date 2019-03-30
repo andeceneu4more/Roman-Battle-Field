@@ -15,7 +15,7 @@ public class Ballista extends Unit
     {
         this.unitID = ++generalUnitID;
         this.formation = new Vector();
-        this.cooldown = Defaults.cooldown;
+        this.cooldown = Defaults.COOLDOWN;
         commander = Captain;
     }
 
@@ -30,6 +30,7 @@ public class Ballista extends Unit
 
     public void printUnit()
     {
+        System.out.println("Ballista");
         for (int i = 0; i < formation.size(); i++)
         {
             formation.elementAt(i).printSoldier();
@@ -43,13 +44,13 @@ public class Ballista extends Unit
             rating += formation.elementAt(i).rating();
         }
         rating = rating / formation.size();
-        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.minimumAbilities) /
-                (Defaults.maximumAbilities - Defaults.minimumAbilities)));
+        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
+                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
         rating = commanderRatio * rating;
-        rangedStrength = Math.round(Defaults.ballistersRangedRatio * rating);
-        meleeStrength = Math.round(Defaults.ballistersMeleeRatio * rating);
-        damage = (Defaults.ballistersDamageRatio * rating) *
-                Math.floor(Defaults.standardTime / cooldown);
+        rangedStrength = Math.round(Defaults.BALLISTERS_RANGED_RATIO * rating);
+        meleeStrength = Math.round(Defaults.BALLISTERS_MELEE_RATIO * rating);
+        damage = (Defaults.BALLISTERS_DAMAGE_RATIO * rating) *
+                Math.floor(Defaults.STANDARD_TIME / cooldown);
     }
 }
