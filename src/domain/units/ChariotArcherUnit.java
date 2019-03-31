@@ -3,6 +3,7 @@ package domain.units;
 import domain.individuals.ChariotArcher;
 import domain.individuals.Commander;
 import domain.individuals.Soldier;
+import services.Fate;
 import tools.Defaults;
 
 import java.util.Vector;
@@ -14,7 +15,7 @@ public class ChariotArcherUnit extends Unit
     public ChariotArcherUnit(Commander Captain)
     {
         this.unitId = ++generalUnitId;
-        this.formation = new Vector();
+        this.formation = new Vector <ChariotArcher>();
         commander = Captain;
     }
 
@@ -43,6 +44,7 @@ public class ChariotArcherUnit extends Unit
                 (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
         rating = commanderRatio * rating;
+        rating = discipline * rating;
         rangedStrength = Math.round(Defaults.CHARIOT_RANGED_RATIO * rating);
         meleeStrength = Math.round(Defaults.CHARIOT_MELEE_RATIO * rating);
         damage = Defaults.CHARIOT_DAMAGE_RATIO * rating;
@@ -63,6 +65,71 @@ public class ChariotArcherUnit extends Unit
     public int getSoldierNumber()
     {
         return formation.size();
+    }
+
+    public void killSoldierById(int id)
+    {
+        ChariotArcher wanted;
+        boolean found = false;
+        for (int i = 0; i < formation.size() && !found; i++)
+        {
+            wanted = formation.elementAt(i);
+            if (wanted.getSoldierId() == id)
+            {
+                formation.removeElement(wanted);
+                found = true;
+            }
+        }
+    }
+
+    public ChariotArcher getRandomSoldier()
+    {
+        int index = (int) Math.round(Math.random() * getSoldierNumber());
+        return formation.elementAt(index);
+    }
+
+    public void trainSoldiers(Fate fate)
+    {
+
+        int ability = (int) Math.round(commander.getAbilities() * Defaults.TRAINING_ABILITY);
+        commander.setAbilities(ability);
+        discipline += 0.1;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        // uniform training
+        double uniformImpact = impact * Defaults.UNIFORM_RATIO;
+        int i;
+        for (i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).trainSoldier(uniformImpact);
+        }
+        // biased training
+        double biasedImpact = impact * Defaults.BIASED_RATIO;
+        int sample = (int) Math.round(getSoldierNumber() * Defaults.BIASED_PERCENT);
+        for (i = 0; i < sample; i++)
+        {
+            getRandomSoldier().train(biasedImpact);
+        }
+    }
+
+    public void rest()
+    {
+        for (int i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).rest();
+        }
+    }
+
+    public void nextFewYears(int years)
+    {
+        for (int i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).nextFewYears(years);
+            if (formation.elementAt(i).ifRetired())
+            {
+                formation.removeElementAt(i);
+                i--;
+            }
+        }
     }
 }
 

@@ -45,4 +45,10 @@ public class Ranger extends Soldier
         rating = xpRatio * rating;
         return rating;
     }
+
+    public void train(double impact)
+    {
+        stealth = (int) Math.round((1 + impact) * stealth);
+        survivalRate = (1 + impact) * survivalRate;
+    }
 }

@@ -51,4 +51,10 @@ public class HeavyInfantryman extends Soldier
         rating = xpRatio * rating;
         return rating;
     }
+
+    public void train(double impact)
+    {
+        swordDamage = (int) Math.round((1 + impact) * swordDamage);
+        armour = (int) Math.round((1 + impact) * armour);
+    }
 }

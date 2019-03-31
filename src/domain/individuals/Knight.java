@@ -44,4 +44,10 @@ public class Knight extends Soldier
         rating = xpRatio * rating;
         return rating;
     }
+
+    public void train(double impact)
+    {
+        swordDamage = (int) Math.round((1 + impact) * swordDamage);
+        speed = (1 + impact) * speed;
+    }
 }

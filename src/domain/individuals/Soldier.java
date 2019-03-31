@@ -8,7 +8,7 @@ public abstract class Soldier
     protected  String name;
     protected int age;
     protected int soldierId, unitId, commanderId;
-    protected int health, xp;
+    protected int health, stamina, xp;
 
     public Soldier()
     {
@@ -17,6 +17,7 @@ public abstract class Soldier
         this.soldierId = ++generalSoldierID;
         this.health = Defaults.HEALTH;
         this.xp = Defaults.MINIMUM_XP;
+        this.stamina = Defaults.STAMINA;
     }
 
     public void setName(String name)
@@ -55,5 +56,34 @@ public abstract class Soldier
         return soldierId;
     }
 
+    public int getUnitId()
+    {
+        return unitId;
+    }
+
     public abstract void printSoldier();
+
+    public void trainSoldier(double impact)
+    {
+        xp = (int) Math.round((1 + impact) * xp);
+        stamina = (int) Math.round((1 - impact) * stamina);
+    }
+
+    public void rest()
+    {
+        this.health = Defaults.HEALTH;
+        this.stamina = Defaults.STAMINA;
+    }
+
+    public void nextFewYears(int years)
+    {
+        age += years;
+    }
+
+    public boolean ifRetired()
+    {
+        return age >= Defaults.MAXIMUM_AGE;
+    }
+
+    public abstract void train(double impact);
 }

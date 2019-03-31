@@ -9,6 +9,7 @@ public interface Defaults
     public static final String NAME = "Marcus Antonius";
     public static final String ORIGIN = "roman";
     public static final int HEALTH = 100;
+    public static final int STAMINA = 100;
     public static final double STANDARD_TIME = 2000;
     public static final int MINIMUM_AGE = 18;
     public static final int MAXIMUM_AGE = 50;
@@ -31,8 +32,6 @@ public interface Defaults
 
     // Ballister
     public static final int WATCHFULLNESS = 65;
-    public static final int MINIMUM_WATCHFULLNESS = 40;
-    public static final int MAXIMUM_WATCHFULLNESS = 95;
 
     // Ballista
     public static final double COOLDOWN = 45;
@@ -85,4 +84,15 @@ public interface Defaults
     public static final double RANGER_MELEE_RATIO = 0.0005;
     public static final double RANGER_DAMAGE_RATIO = 0.0008;
 
+    // Fate
+    public static final double IMPACT = 100;
+
+    // Training
+    public static final double TRAINING_ABILITY = 0.15;
+    public static final double UNIFORM_RATIO = 0.2;
+    public static final double BIASED_RATIO = 0.15;
+    public static final double BIASED_PERCENT = 0.1;
+
+    // Unit
+    public static final double DISCIPLINE = 0.2;
 }

@@ -3,6 +3,7 @@ package domain;
 import domain.individuals.Commander;
 import domain.individuals.Soldier;
 import domain.units.*;
+import services.Fate;
 import tools.Enrollment;
 
 import java.util.Vector;
@@ -18,17 +19,18 @@ public class Senate
     private Vector <LightInfantrymanUnit> lightLegionars;
     private Vector <RangerUnit> rangers;
     private Enrollment recruitment;
+    private final Fate fate = Fate.getInstance();
 
     public Senate()
     {
         consul = new Commander();
-        archers = new Vector();
-        ballista = new Vector();
-        chariotArchers = new Vector();
-        legionars = new Vector();
-        knights = new Vector();
-        lightLegionars = new Vector();
-        rangers = new Vector();
+        archers = new Vector <ArcherUnit>();
+        ballista = new Vector <Ballista>();
+        chariotArchers = new Vector <ChariotArcherUnit>();
+        legionars = new Vector <HeavyInfantrymanUnit>();
+        knights = new Vector <KnightUnit>();
+        lightLegionars = new Vector <LightInfantrymanUnit>();
+        rangers = new Vector <RangerUnit>();
         recruitment = new Enrollment();
     }
 
@@ -210,13 +212,55 @@ public class Senate
         return null;
     }
 
-    // killSoldierByID
-    // get Random solider dintr-o unitate
+    public void killSoldierById(int id)
+    {
+        Soldier wanted = getSoldierById(id);
+        Unit target = getUnitById(wanted.getUnitId());
+        target.killSoldierById(id);
+    }
+
+    public void trainUnitById(int id)
+    {
+        Unit target = getUnitById(id);
+        target.trainSoldiers(fate);
+        fate.change();
+    }
+
+    public void restUnitById(int id)
+    {
+        Unit target = getUnitById(id);
+        target.rest();
+    }
+
+    public void yearConfig()
+    {
+        if (fate.getYears() > 0)
+        {
+            nextFewYears(fate.getYears());
+            fate.resetYears();
+        }
+    }
+
+    public void nextFewYears(int years)
+    {
+        consul.nextFewYears(years);
+        int i;
+        for (i = 0; i < archers.size(); i++)
+            archers.elementAt(i).nextFewYears(years);
+        for (i = 0; i < ballista.size(); i++)
+            ballista.elementAt(i).nextFewYears(years);
+        for (i = 0; i < chariotArchers.size(); i++)
+            chariotArchers.elementAt(i).nextFewYears(years);
+        for (i = 0; i < legionars.size(); i++)
+            legionars.elementAt(i).nextFewYears(years);
+        for (i = 0; i < knights.size(); i++)
+            knights.elementAt(i).nextFewYears(years);
+        for (i = 0; i < rangers.size(); i++)
+            rangers.elementAt(i).nextFewYears(years);
+    }
+
     // decimarea unui comandant
-    // antrenamentul facut de o unitate
-    // retirement
-    // ratio + teren random
-    // trecerea unui an
-    // damage dintre 2 unitati
+    // fight dintre 2 unitati
+    // recompensarea unui soldat
     // un repository cu comandantii?
 }

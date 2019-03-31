@@ -37,5 +37,9 @@ public class Ballister extends Soldier
         return rating;
     }
 
+    public void train(double impact)
+    {
+        watchfullness = (int) Math.round((1 + impact) * watchfullness);
+    }
 
 }

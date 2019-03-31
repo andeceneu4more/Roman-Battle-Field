@@ -47,4 +47,11 @@ public class ChariotArcher extends Archer
         rating = xpRatio * rating;
         return rating;
     }
+    public void train(double impact)
+    {
+        rangeDamage = (int) Math.round((1 + impact) * rangeDamage);
+        criticalHitRate = (1 + impact) * rangeDamage;
+        speed = (1 + impact) * speed;
+        cooldown = (1 - impact) * cooldown;
+    }
 }

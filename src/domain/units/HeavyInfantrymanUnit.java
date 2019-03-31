@@ -3,6 +3,7 @@ package domain.units;
 import domain.individuals.Commander;
 import domain.individuals.HeavyInfantryman;
 import domain.individuals.Soldier;
+import services.Fate;
 import tools.Defaults;
 import java.util.Vector;
 
@@ -13,7 +14,7 @@ public class HeavyInfantrymanUnit extends Unit
     public HeavyInfantrymanUnit(Commander Captain)
     {
         this.unitId = ++generalUnitId;
-        this.formation = new Vector();
+        this.formation = new Vector <HeavyInfantryman>();
         commander = Captain;
     }
 
@@ -44,10 +45,9 @@ public class HeavyInfantrymanUnit extends Unit
         }
         double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
                 (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
-
-        rangedStrength = Math.round(Defaults.HEAVY_RANGED_RATIO * commanderRatio * meleeStrength);
-        meleeStrength = Math.round(Defaults.HEAVY_MELEE_RATIO * commanderRatio * meleeStrength);
-        damage = Defaults.HEAVY_DAMAGE_RATIO * commanderRatio * damage;
+        rangedStrength = Math.round(Defaults.HEAVY_RANGED_RATIO * commanderRatio * meleeStrength * discipline);
+        meleeStrength = Math.round(Defaults.HEAVY_MELEE_RATIO * commanderRatio * meleeStrength * discipline);
+        damage = Defaults.HEAVY_DAMAGE_RATIO * commanderRatio * damage * discipline;
     }
 
     public Soldier getSoldierById(int id)
@@ -65,5 +65,70 @@ public class HeavyInfantrymanUnit extends Unit
     public int getSoldierNumber()
     {
         return formation.size();
+    }
+
+    public void killSoldierById(int id)
+    {
+        HeavyInfantryman wanted;
+        boolean found = false;
+        for (int i = 0; i < formation.size() && !found; i++)
+        {
+            wanted = formation.elementAt(i);
+            if (wanted.getSoldierId() == id)
+            {
+                formation.removeElement(wanted);
+                found = true;
+            }
+        }
+    }
+
+    public HeavyInfantryman getRandomSoldier()
+    {
+        int index = (int) Math.round(Math.random() * getSoldierNumber());
+        return formation.elementAt(index);
+    }
+
+    public void trainSoldiers(Fate fate)
+    {
+
+        int ability = (int) Math.round(commander.getAbilities() * Defaults.TRAINING_ABILITY);
+        commander.setAbilities(ability);
+        discipline += 0.1;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        // uniform training
+        double uniformImpact = impact * Defaults.UNIFORM_RATIO;
+        int i;
+        for (i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).trainSoldier(uniformImpact);
+        }
+        // biased training
+        double biasedImpact = impact * Defaults.BIASED_RATIO;
+        int sample = (int) Math.round(getSoldierNumber() * Defaults.BIASED_PERCENT);
+        for (i = 0; i < sample; i++)
+        {
+            getRandomSoldier().train(biasedImpact);
+        }
+    }
+
+    public void rest()
+    {
+        for (int i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).rest();
+        }
+    }
+
+    public void nextFewYears(int years)
+    {
+        for (int i = 0; i < formation.size(); i++)
+        {
+            formation.elementAt(i).nextFewYears(years);
+            if (formation.elementAt(i).ifRetired())
+            {
+                formation.removeElementAt(i);
+                i--;
+            }
+        }
     }
 }

@@ -51,4 +51,10 @@ public class LightInfantryman extends Soldier
         rating = xpRatio * rating;
         return rating;
     }
+
+    public void train(double impact)
+    {
+        swordDamage = (int) Math.round((1 + impact) * swordDamage);
+        agility = (int) Math.round((1 + impact) * agility);
+    }
 }
