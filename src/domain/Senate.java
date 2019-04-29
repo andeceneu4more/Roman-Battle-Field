@@ -1,216 +1,88 @@
 package domain;
 
-import domain.individuals.Commander;
+import domain.guilds.*;
 import domain.individuals.Soldier;
 import domain.units.*;
 import services.Fate;
-import tools.Enrollment;
 
-import java.util.Vector;
+import java.io.*;
 
 public class Senate
 {
-    private Commander consul;
-    private Vector <ArcherUnit> archers;
-    private Vector <Ballista> ballista;
-    private Vector <ChariotArcherUnit> chariotArchers;
-    private Vector <HeavyInfantrymanUnit> legionars;
-    private Vector <KnightUnit> knights;
-    private Vector <LightInfantrymanUnit> lightLegionars;
-    private Vector <RangerUnit> rangers;
-    private Enrollment recruitment;
+    private ArcherGuild archerMaster;
+    private BallistaGuild ballistaMaster;
+    private ChariotArcherGuild chariotArcherMaster;
+    private HeavyInfantrymanGuild heavyInfantrymanMaster;
+    private KnightGuild knightMaster;
+    private LightInfantrymanGuild lightInfantrymanMaster;
+    private RangerGuild rangerMaster;
     private final Fate fate = Fate.getInstance();
 
     public Senate()
     {
-        consul = new Commander();
-        archers = new Vector <ArcherUnit>();
-        ballista = new Vector <Ballista>();
-        chariotArchers = new Vector <ChariotArcherUnit>();
-        legionars = new Vector <HeavyInfantrymanUnit>();
-        knights = new Vector <KnightUnit>();
-        lightLegionars = new Vector <LightInfantrymanUnit>();
-        rangers = new Vector <RangerUnit>();
-        recruitment = new Enrollment();
-    }
-
-    public void initialize()
-    {
-        consul = new Commander();
-        ArcherUnit archerUnit = new ArcherUnit(consul);
-        archerUnit.addSoldier(recruitment.withType("Archer").withName("Marius").enrollArcher());
-        archerUnit.addSoldier(recruitment.withType("Archer").withName("Caius").enrollArcher());
-        archerUnit.rating();
-        archers.addElement(archerUnit);
-
-        Ballista ballisterUnit = new Ballista(consul);
-        ballisterUnit.addSoldier(recruitment.withType("Ballister").withName("Marius").enrollBallister());
-        ballisterUnit.addSoldier(recruitment.withType("Ballister").withName("Flavius").enrollBallister());
-        ballisterUnit.rating();
-        ballista.addElement(ballisterUnit);
-
-        ChariotArcherUnit chariots = new ChariotArcherUnit(consul);
-        chariots.addSoldier(recruitment.withType("Chariot Archer").withName("Liviu").enrollChariotArcher());
-        chariots.addSoldier(recruitment.withType("Chariot Archer").withName("Luca").enrollChariotArcher());
-        chariots.rating();
-        chariotArchers.addElement(chariots);
-
-        HeavyInfantrymanUnit legion = new HeavyInfantrymanUnit(consul);
-        legion.addSoldier(recruitment.withType("Heavy Infantryman").withName("Luca").enrollHeavyInfantryman());
-        legion.addSoldier(recruitment.withType("Heavy Infantryman").withName("Aurelius").enrollHeavyInfantryman());
-        legion.rating();
-        legionars.addElement(legion);
-
-        KnightUnit knightUnit = new KnightUnit(consul);
-        knightUnit.addSoldier(recruitment.withType("Knight").withName("Paul").enrollKnight());
-        knightUnit.addSoldier(recruitment.withType("Knight").withName("Luca").enrollKnight());
-        knightUnit.rating();
-        knights.addElement(knightUnit);
-
-        LightInfantrymanUnit velits = new LightInfantrymanUnit(consul);
-        velits.addSoldier(recruitment.withType("Light Infantryman").withName("Aurelius").enrollLightInfantryman());
-        velits.addSoldier(recruitment.withType("Light Infantryman").withName("Marcus").enrollLightInfantryman());
-        velits.rating();
-        lightLegionars.addElement(velits);
-
-        System.out.println("Rangers");
-        RangerUnit rangerUnit = new RangerUnit(consul);
-        rangerUnit.addSoldier(recruitment.withType("Ranger").withName("Octavian").enrollRanger());
-        rangerUnit.addSoldier(recruitment.withType("Ranger").withName("Lucius").enrollRanger());
-        rangerUnit.rating();
-        rangers.addElement(rangerUnit);
+        archerMaster = new ArcherGuild();
+        ballistaMaster = new BallistaGuild();
+        chariotArcherMaster = new ChariotArcherGuild();
+        heavyInfantrymanMaster = new HeavyInfantrymanGuild();
+        knightMaster = new KnightGuild();
+        lightInfantrymanMaster = new LightInfantrymanGuild();
+        rangerMaster = new RangerGuild();
     }
 
     public Soldier getSoldierById(int id)
     {
-        if (consul.getSoldierId() == id)
-            return  consul;
         Soldier wanted;
-        int i;
-        for (i = 0; i < archers.size(); i++)
-        {
-            wanted = archers.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
-        for (i = 0; i < ballista.size(); i++)
-        {
-            wanted = ballista.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
-        for (i = 0; i < chariotArchers.size(); i++)
-        {
-            wanted = chariotArchers.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
-        for (i = 0; i < legionars.size(); i++)
-        {
-            wanted = legionars.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
-        for (i = 0; i < knights.size(); i++)
-        {
-            wanted = knights.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
-        for (i = 0; i < rangers.size(); i++)
-        {
-            wanted = rangers.elementAt(i).getSoldierById(id);
-            if (wanted != null)
-                return wanted;
-        }
+        wanted = archerMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = ballistaMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = chariotArcherMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = heavyInfantrymanMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = knightMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = lightInfantrymanMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = rangerMaster.getSoldierById(id);
+        if (wanted != null)
+            return wanted;
         return null;
     }
 
     public Unit getUnitById(int id)
     {
         Unit wanted;
-        int i;
-        for (i = 0; i < archers.size(); i++)
-        {
-            wanted = archers.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
-        for (i = 0; i < ballista.size(); i++)
-        {
-            wanted = ballista.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
-        for (i = 0; i < chariotArchers.size(); i++)
-        {
-            wanted = chariotArchers.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
-        for (i = 0; i < legionars.size(); i++)
-        {
-            wanted = legionars.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
-        for (i = 0; i < knights.size(); i++)
-        {
-            wanted = knights.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
-        for (i = 0; i < rangers.size(); i++)
-        {
-            wanted = rangers.elementAt(i);
-            if (wanted.getUnitId() == id)
-                return wanted;
-        }
+        wanted = archerMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = ballistaMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = chariotArcherMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = heavyInfantrymanMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = knightMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = lightInfantrymanMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
+        wanted = rangerMaster.getUnitById(id);
+        if (wanted != null)
+            return wanted;
         return null;
     }
 
-    public Commander getCommanderById(int id)
-    {
-        Commander wanted;
-        int i;
-        for (i = 0; i < archers.size(); i++)
-        {
-            wanted = archers.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        for (i = 0; i < ballista.size(); i++)
-        {
-            wanted = ballista.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        for (i = 0; i < chariotArchers.size(); i++)
-        {
-            wanted = chariotArchers.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        for (i = 0; i < legionars.size(); i++)
-        {
-            wanted = legionars.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        for (i = 0; i < knights.size(); i++)
-        {
-            wanted = knights.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        for (i = 0; i < rangers.size(); i++)
-        {
-            wanted = rangers.elementAt(i).getCommander();
-            if (wanted.getSoldierId() == id)
-                return wanted;
-        }
-        return null;
-    }
 
     public void killSoldierById(int id)
     {
@@ -243,24 +115,65 @@ public class Senate
 
     public void nextFewYears(int years)
     {
-        consul.nextFewYears(years);
-        int i;
-        for (i = 0; i < archers.size(); i++)
-            archers.elementAt(i).nextFewYears(years);
-        for (i = 0; i < ballista.size(); i++)
-            ballista.elementAt(i).nextFewYears(years);
-        for (i = 0; i < chariotArchers.size(); i++)
-            chariotArchers.elementAt(i).nextFewYears(years);
-        for (i = 0; i < legionars.size(); i++)
-            legionars.elementAt(i).nextFewYears(years);
-        for (i = 0; i < knights.size(); i++)
-            knights.elementAt(i).nextFewYears(years);
-        for (i = 0; i < rangers.size(); i++)
-            rangers.elementAt(i).nextFewYears(years);
+        archerMaster.nextFewYears(years);
+        ballistaMaster.nextFewYears(years);
+        chariotArcherMaster.nextFewYears(years);
+        heavyInfantrymanMaster.nextFewYears(years);
+        knightMaster.nextFewYears(years);
+        knightMaster.nextFewYears(years);
+        lightInfantrymanMaster.nextFewYears(years);
+        rangerMaster.nextFewYears(years);
     }
 
-    // decimarea unui comandant
+    public void readSoldiers()
+    {
+        String csvPath = new File("src/csv/Soldiers.csv").getAbsolutePath();
+        try
+        {
+            BufferedReader buffer = new BufferedReader(new FileReader(csvPath));
+            String firstLine = buffer.readLine();
+            String line = "";
+            while ((line = buffer.readLine()) != null)
+            {
+                String[] attributes = line.split(",");
+                switch (attributes[0])
+                {
+                    case "Archer":
+                        archerMaster.read(firstLine, attributes);
+                        break;
+
+                    case "Ballister":
+                        ballistaMaster.read(firstLine, attributes);
+                        break;
+
+                    case "ChariotArcher":
+                        chariotArcherMaster.read(firstLine, attributes);
+                        break;
+
+                    case "HeavyInfantryman":
+                        heavyInfantrymanMaster.read(firstLine, attributes);
+                        break;
+
+                    case "Knight":
+                        knightMaster.read(firstLine, attributes);
+                        break;
+
+                    case "LightInfantryman":
+                        lightInfantrymanMaster.read(firstLine, attributes);
+                        break;
+
+                    case "Ranger":
+                        rangerMaster.read(firstLine, attributes);
+                        break;
+                }
+            }
+        }
+        catch (IOException exception)
+        {
+            exception.printStackTrace();
+        }
+    }
+    // decimarea intr-un guild
     // fight dintre 2 unitati
-    // recompensarea unui soldat
-    // un repository cu comandantii?
+    // => recompensarea unui soldat + moartea a catorva soldati random
 }

@@ -1,0 +1,15 @@
+Soldier Class,Name,Health,Stamina,XP,Age,Range Damage,Critical Hit Rate,Watchfullness,Speed,Cooldown,Armour,Agility,Sword Damage,Stealth,Survival Rate
+Archer,Caius Licinus,100,100,35,18,15,0.22,-,-,-,-,-,-,-,-
+Archer,Marius Licinus,100,100,35,18,16,0.23,-,-,-,-,-,-,-,-
+Ballister,Marius Aurelius,100,100,35,18,-,-,66,-,-,-,-,-,-,-
+Ballister,Flavius Aurelius,100,100,35,18,-,-,68,-,-,-,-,-,-,-
+ChariotArcher,Liviu Antonius,100,100,35,18,15,0.22,-,15,60,-,-,-,-,-
+ChariotArcher,Luca Antonius,100,100,35,18,16,0.23,-,15,60,-,-,-,-,-
+HeavyInfantryman,Luca Ulpius,100,100,35,18,-,-,-,-,-,50,-,70,-,-
+HeavyInfantryman,Aurelius Ulpius,100,100,35,18,-,-,-,-,-,50,-,70,-,-
+LightInfantryman,Aurelius Severus,100,100,35,18,-,-,-,-,-,-,35,40,-,-
+LightInfantryman,Marcus Severus,100,100,35,18,-,-,-,-,-,-,35,40,-,-
+Knight,Paul Licinus,100,100,35,18,-,-,-,70,-,-,-,25,-,-
+Knight,Luca Pius,100,100,35,18,-,-,-,70,-,-,-,25,-,-
+Ranger,Octavian Pius,100,100,35,18,-,-,-,-,-,-,-,-,25,0.3
+Ranger,Lucius Pius,100,100,35,18,-,-,-,-,-,-,-,-,25,0.3

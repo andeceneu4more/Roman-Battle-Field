@@ -7,7 +7,8 @@ public abstract class Soldier
     protected  static int generalSoldierID = 0;
     protected  String name;
     protected int age;
-    protected int soldierId, unitId, commanderId;
+    protected int soldierId;
+    protected int unitId;
     protected int health, stamina, xp;
 
     public Soldier()
@@ -25,20 +26,19 @@ public abstract class Soldier
         this.name = name;
     }
 
+    public void setStamina(int stamina)
+    {
+        this.stamina = stamina;
+    }
+
     public void setAge(int age)
     {
         this.age = age;
     }
 
-
     public void setUnitId(int unitId)
     {
         this.unitId = unitId;
-    }
-
-    public void setCommanderId(int commanderId)
-    {
-        this.commanderId = commanderId;
     }
 
     public void setHealth(int health)

@@ -1,13 +1,9 @@
 package tools;
 
-import domain.individuals.Archer;
-import domain.individuals.Commander;
-
 public interface Defaults
 {
     // Soldier
     public static final String NAME = "Marcus Antonius";
-    public static final String ORIGIN = "roman";
     public static final int HEALTH = 100;
     public static final int STAMINA = 100;
     public static final double STANDARD_TIME = 2000;
@@ -95,4 +91,5 @@ public interface Defaults
 
     // Unit
     public static final double DISCIPLINE = 0.2;
+    public static final int UNITY_CAPACITY = 10;
 }

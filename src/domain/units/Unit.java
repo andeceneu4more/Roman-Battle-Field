@@ -1,6 +1,5 @@
 package domain.units;
 
-import domain.individuals.Commander;
 import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
@@ -12,7 +11,7 @@ public abstract class Unit
     protected long rangedStrength;
     protected double damage;
     protected double discipline;
-    protected Commander commander;
+    protected int abilities;
     protected int unitId;
 
     public int getUnitId()
@@ -20,10 +19,6 @@ public abstract class Unit
         return unitId;
     }
 
-    public Commander getCommander()
-    {
-        return commander;
-    }
 
     public void printAtributes()
     {
@@ -43,7 +38,7 @@ public abstract class Unit
 
     public abstract Soldier getSoldierById(int id);
 
-    public abstract int getSoldierNumber();
+    public abstract int getUnitSize();
 
     public abstract void killSoldierById(int id);
 
@@ -54,4 +49,6 @@ public abstract class Unit
     public abstract void rest();
 
     public abstract void nextFewYears(int years);
+
+//    public abstract void decimate(int iterator);
 }

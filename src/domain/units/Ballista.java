@@ -1,7 +1,6 @@
 package domain.units;
 
 import domain.individuals.Ballister;
-import domain.individuals.Commander;
 import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
@@ -13,12 +12,11 @@ public class Ballista extends Unit
     private double cooldown;
     private Vector <Ballister> formation;
 
-    public Ballista(Commander Captain)
+    public Ballista()
     {
         this.unitId = ++generalUnitId;
         this.formation = new Vector <Ballister>();
         this.cooldown = Defaults.COOLDOWN;
-        commander = Captain;
     }
 
     public void setCooldown(double cooldown)
@@ -29,7 +27,6 @@ public class Ballista extends Unit
     public void addSoldier(Ballister element)
     {
         element.setUnitId(unitId);
-        element.setCommanderId(commander.getSoldierId());
         formation.addElement(element);
     }
 
@@ -49,7 +46,7 @@ public class Ballista extends Unit
             rating += formation.elementAt(i).rating();
         }
         rating = rating / formation.size();
-        double commanderRatio = (1 + ((commander.getAbilities() - Defaults.MINIMUM_ABILITIES) /
+        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
                 (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
 
         rating = commanderRatio * rating;
@@ -62,8 +59,6 @@ public class Ballista extends Unit
 
     public Soldier getSoldierById(int id)
     {
-        if (commander.getSoldierId() == id)
-            return commander;
         for (int i = 0; i < formation.size(); i++)
         {
             if (formation.elementAt(i).getSoldierId() == id)
@@ -72,7 +67,7 @@ public class Ballista extends Unit
         return null;
     }
 
-    public int getSoldierNumber()
+    public int getUnitSize()
     {
         return formation.size();
     }
@@ -94,15 +89,14 @@ public class Ballista extends Unit
 
     public Ballister getRandomSoldier()
     {
-        int index = (int) Math.round(Math.random() * getSoldierNumber());
+        int index = (int) Math.round(Math.random() * getUnitSize());
         return formation.elementAt(index);
     }
 
     public void trainSoldiers(Fate fate)
     {
 
-        int ability = (int) Math.round(commander.getAbilities() * Defaults.TRAINING_ABILITY);
-        commander.setAbilities(ability);
+        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
         discipline += 0.1;
         double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
         // uniform training
@@ -114,7 +108,7 @@ public class Ballista extends Unit
         }
         // biased training
         double biasedImpact = impact * Defaults.BIASED_RATIO;
-        int sample = (int) Math.round(getSoldierNumber() * Defaults.BIASED_PERCENT);
+        int sample = (int) Math.round(getUnitSize() * Defaults.BIASED_PERCENT);
         for (i = 0; i < sample; i++)
         {
             getRandomSoldier().train(biasedImpact);

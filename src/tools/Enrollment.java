@@ -25,24 +25,31 @@ public class Enrollment
         {
             case "Archer":
                 archer.setName(name);
+                break;
 
             case "Ballister":
                 ballister.setName(name);
+                break;
 
-            case "Chariot Archer":
+            case "ChariotArcher":
                 chariotArcher.setName(name);
+                break;
 
-            case "Heavy Infantryman":
+            case "HeavyInfantryman":
                 legionar.setName(name);
+                break;
 
             case "Knight":
                 knight.setName(name);
+                break;
 
-            case "Light Infantryman":
+            case "LightInfantryman":
                 lightLegionar.setName(name);
+                break;
 
             case "Ranger":
                 ranger.setName(name);
+                break;
         }
         return this;
     }
@@ -53,24 +60,31 @@ public class Enrollment
         {
             case "Archer":
                 archer.setAge(age);
+                break;
 
             case "Ballister":
                 ballister.setAge(age);
+                break;
 
-            case "Chariot Archer":
+            case "ChariotArcher":
                 chariotArcher.setAge(age);
+                break;
 
-            case "Heavy Infantryman":
+            case "HeavyInfantryman":
                 legionar.setAge(age);
+                break;
 
             case "Knight":
                 knight.setAge(age);
+                break;
 
-            case "Light Infantryman":
+            case "LightInfantryman":
                 lightLegionar.setAge(age);
+                break;
 
             case "Ranger":
                 ranger.setAge(age);
+                break;
         }
         return this;
     }
@@ -81,24 +95,66 @@ public class Enrollment
         {
             case "Archer":
                 archer.setHealth(health);
+                break;
 
             case "Ballister":
                 ballister.setHealth(health);
+                break;
 
-            case "Chariot Archer":
+            case "ChariotArcher":
                 chariotArcher.setHealth(health);
+                break;
 
-            case "Heavy Infantryman":
+            case "HeavyInfantryman":
                 legionar.setHealth(health);
+                break;
 
             case "Knight":
                 knight.setHealth(health);
+                break;
 
-            case "Light Infantryman":
+            case "LightInfantryman":
                 lightLegionar.setHealth(health);
+                break;
 
             case "Ranger":
                 ranger.setHealth(health);
+                break;
+        }
+        return this;
+    }
+
+    public Enrollment withStamina(int stamina)
+    {
+        switch (type)
+        {
+            case "Archer":
+                archer.setStamina(stamina);
+                break;
+
+            case "Ballister":
+                ballister.setStamina(stamina);
+                break;
+
+            case "ChariotArcher":
+                chariotArcher.setStamina(stamina);
+                break;
+
+            case "HeavyInfantryman":
+                legionar.setStamina(stamina);
+                break;
+
+            case "Knight":
+                knight.setStamina(stamina);
+                break;
+
+            case "LightInfantryman":
+                lightLegionar.setStamina(stamina);
+                break;
+
+            case "Ranger":
+                ranger.setStamina(stamina);
+                break;
         }
         return this;
     }
@@ -109,24 +165,31 @@ public class Enrollment
         {
             case "Archer":
                 archer.setXp(xp);
+                break;
 
             case "Ballister":
                 ballister.setXp(xp);
+                break;
 
-            case "Chariot Archer":
+            case "ChariotArcher":
                 chariotArcher.setXp(xp);
+                break;
 
-            case "Heavy Infantryman":
+            case "HeavyInfantryman":
                 legionar.setXp(xp);
+                break;
 
             case "Knight":
                 knight.setXp(xp);
+                break;
 
-            case "Light Infantryman":
+            case "LightInfantryman":
                 lightLegionar.setXp(xp);
+                break;
 
             case "Ranger":
                 ranger.setXp(xp);
+                break;
         }
         return this;
     }
@@ -137,9 +200,11 @@ public class Enrollment
         {
             case "Archer":
                 archer.setRangeDamage(rangeDamage);
+                break;
 
             case "Chariot Archer":
                 chariotArcher.setRangeDamage(rangeDamage);
+                break;
 
         }
         return this;
@@ -151,15 +216,17 @@ public class Enrollment
         {
             case "Archer":
                 archer.setCriticalHitRate(criticalHitRate);
+                break;
 
             case "Chariot Archer":
                 chariotArcher.setCriticalHitRate(criticalHitRate);
+                break;
 
         }
         return this;
     }
 
-    public Enrollment wirhWatchfullness(int watchfullness)
+    public Enrollment withWatchfullness(int watchfullness)
     {
         ballister.setWatchfullness(watchfullness);
         return this;
@@ -171,10 +238,11 @@ public class Enrollment
         {
             case "Chariot Archer":
                 chariotArcher.setSpeed(speed);
+                break;
 
             case "Knight":
                 knight.setSpeed(speed);
-
+                break;
         }
         return this;
     }
@@ -189,15 +257,17 @@ public class Enrollment
     {
         switch (type)
         {
-            case "Heavy Infantryman":
+            case "HeavyInfantryman":
                 legionar.setSwordDamage(swordDamage);
+                break;
 
             case "Knight":
                 knight.setSwordDamage(swordDamage);
+                break;
 
-            case "Light Infantryman":
+            case "LightInfantryman":
                 lightLegionar.setSwordDamage(swordDamage);
-
+                break;
         }
         return this;
     }

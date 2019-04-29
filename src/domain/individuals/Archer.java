@@ -30,7 +30,6 @@ public class Archer extends Soldier
         System.out.println(age);
         System.out.println(soldierId);
         System.out.println(unitId);
-        System.out.println(commanderId);
         System.out.println(health);
         System.out.println(xp);
         System.out.println(rangeDamage);

@@ -2,13 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1975a6ea-ba0e-41a7-a52d-8631e2195606" name="Default Changelist" comment="chariot archers">
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/HeavyInfantrymanGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/KnightGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/LightInfantrymanGuild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/guilds/RangerGuild.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/guilds/Guild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/Senate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/Senate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Archer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Archer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Ballister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Ballister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/ChariotArcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/ChariotArcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Commander.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/HeavyInfantryman.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/HeavyInfantryman.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Knight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Knight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/LightInfantryman.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/LightInfantryman.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Ranger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Ranger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Soldier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/individuals/Soldier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/ArcherUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/ArcherUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/Ballista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/Ballista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/ChariotArcherUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/ChariotArcherUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/HeavyInfantrymanUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/HeavyInfantrymanUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/KnightUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/KnightUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/LightInfantrymanUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/LightInfantrymanUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/RangerUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/RangerUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/domain/units/Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/services/Fate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/services/Fate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/tools/Defaults.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/tools/Defaults.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RomanBattleField/tools/Enrollment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RomanBattleField/tools/Enrollment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Senate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Senate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/HeavyInfantrymanGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/HeavyInfantrymanGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/KnightGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/KnightGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/LightInfantrymanGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/LightInfantrymanGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/guilds/RangerGuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/guilds/RangerGuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/Archer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Ballister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/Ballister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Commander.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Ranger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/Ranger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/individuals/Soldier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/individuals/Soldier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/ArcherUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/ArcherUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/Ballista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/Ballista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/HeavyInfantrymanUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/HeavyInfantrymanUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/KnightUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/KnightUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/RangerUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/RangerUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/units/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/units/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/Defaults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/Defaults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/Enrollment.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +63,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/domain/Senate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="174" column="5" lean-forward="true" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getSoldierById#0;class#Senate#0" />
+                <element signature="method#getUnitById#0;class#Senate#0" />
+                <element signature="method#killSoldierById#0;class#Senate#0" />
+                <element signature="method#trainUnitById#0;class#Senate#0" />
+                <element signature="method#restUnitById#0;class#Senate#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,6 +89,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Infantryman</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,29 +121,36 @@
         <option value="$PROJECT_DIR$/src/domain/Units/KnightUnit.java" />
         <option value="$PROJECT_DIR$/src/domain/units/BallisterUnit.java" />
         <option value="$PROJECT_DIR$/src/services/Senate.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Commander.java" />
-        <option value="$PROJECT_DIR$/src/tools/Enrollment.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Archer.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Ballister.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Knight.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Ranger.java" />
         <option value="$PROJECT_DIR$/src/services/Fate.java" />
-        <option value="$PROJECT_DIR$/src/domain/individuals/Soldier.java" />
-        <option value="$PROJECT_DIR$/src/domain/Senate.java" />
-        <option value="$PROJECT_DIR$/src/tools/Defaults.java" />
-        <option value="$PROJECT_DIR$/src/domain/units/Unit.java" />
-        <option value="$PROJECT_DIR$/src/domain/units/RangerUnit.java" />
-        <option value="$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Commander.java" />
+        <option value="$PROJECT_DIR$/src/domain/units/Ballista.java" />
+        <option value="$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java" />
         <option value="$PROJECT_DIR$/src/domain/units/HeavyInfantrymanUnit.java" />
         <option value="$PROJECT_DIR$/src/domain/units/KnightUnit.java" />
-        <option value="$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java" />
-        <option value="$PROJECT_DIR$/src/domain/units/Ballista.java" />
+        <option value="$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java" />
+        <option value="$PROJECT_DIR$/src/domain/units/RangerUnit.java" />
+        <option value="$PROJECT_DIR$/src/domain/units/Unit.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Archer.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Knight.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Ranger.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Ballister.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java" />
+        <option value="$PROJECT_DIR$/src/domain/individuals/Soldier.java" />
+        <option value="$PROJECT_DIR$/src/tools/Defaults.java" />
         <option value="$PROJECT_DIR$/src/domain/units/ArcherUnit.java" />
         <option value="$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/HeavyInfantrymanGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/KnightGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/LightInfantrymanGuild.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/RangerGuild.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/tools/Enrollment.java" />
+        <option value="$PROJECT_DIR$/src/domain/guilds/Guild.java" />
+        <option value="$PROJECT_DIR$/src/domain/Senate.java" />
       </list>
     </option>
   </component>
@@ -93,7 +168,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,20 +198,6 @@
               <item name="RomanBattleField" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="guilds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RomanBattleField" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RomanBattleField" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="individuals" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RomanBattleField" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RomanBattleField" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
               <item name="units" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -155,11 +216,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554147249063" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556546294966" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../pao-lab/laborator5" />
   </component>
   <component name="RunDashboard">
@@ -230,8 +291,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28456375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31409395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -269,169 +331,14 @@
     <entry file="file://$PROJECT_DIR$/src/domain/individuals/KnigthInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/domain/individuals/LightInfantrymanInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/domain/individuals/InfantrymanInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Commander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Ballister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="52" column="53" selection-start-line="52" selection-start-column="53" selection-end-line="52" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Archer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="51" column="51" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="51" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Knight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Ranger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Enrollment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="263" column="5" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="5" />
-          <folding>
-            <element signature="method#withType#0;class#Enrollment#0" />
-            <element signature="method#withAge#0;class#Enrollment#0" />
-            <element signature="method#withHealth#0;class#Enrollment#0" />
-            <element signature="method#withXp#0;class#Enrollment#0" />
-            <element signature="method#withRangeDamage#0;class#Enrollment#0" />
-            <element signature="method#wirhWatchfullness#0;class#Enrollment#0" />
-            <element signature="method#withCooldown#0;class#Enrollment#0" />
-            <element signature="method#withArmour#0;class#Enrollment#0" />
-            <element signature="method#withAgility#0;class#Enrollment#0" />
-            <element signature="method#withSurvivalRate#0;class#Enrollment#0" />
-            <element signature="method#withStealth#0;class#Enrollment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/Fate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getInstance#0;class#Fate#0" />
-            <element signature="method#nextYear#0;class#Fate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Soldier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="82" column="25" lean-forward="true" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="28" />
-          <folding>
-            <element signature="method#rest#0;class#Soldier#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RomanBattleField.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/Senate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initialize#0;class#Senate#0" />
-            <element signature="method#getSoldierById#0;class#Senate#0" />
-            <element signature="method#getUnitById#0;class#Senate#0" />
-            <element signature="method#getCommanderById#0;class#Senate#0" />
-            <element signature="method#killSoldierById#0;class#Senate#0" />
-            <element signature="method#trainUnitById#0;class#Senate#0" />
-            <element signature="method#yearConfig#0;class#Senate#0" />
-            <element signature="method#nextFewYears#0;class#Senate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Defaults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="96" column="48" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/units/ArcherUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Commander.java" />
     <entry file="file://$PROJECT_DIR$/src/domain/units/HeavyInfantrymanUnit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
+        <state relative-caret-position="170">
+          <caret line="10" column="48" lean-forward="true" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -440,18 +347,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/units/KnightUnit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="95" column="26" selection-start-line="95" selection-start-column="26" selection-end-line="95" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
+        <state relative-caret-position="68">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -460,25 +357,178 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/units/Ballista.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/guilds/RangerGuild.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/io/BufferedReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="149">
+          <caret line="390" column="18" selection-start-line="390" selection-start-column="18" selection-end-line="390" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/units/ChariotArcherUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1197">
+          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/units/Unit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        <state relative-caret-position="102">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Ballister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/units/RangerUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/units/LightInfantrymanUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="90" column="40" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Fate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getInstance#0;class#Fate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Ranger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="47" column="36" lean-forward="true" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/ChariotArcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Knight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/HeavyInfantryman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/LightInfantryman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Defaults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="93" column="42" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/units/ArcherUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ArcherUnit#0;class#ArcherUnit#0" />
+            <element signature="method#addSoldier#0;class#ArcherUnit#0" />
+            <element signature="method#printUnit#0;class#ArcherUnit#0" />
+            <element signature="method#rating#0;class#ArcherUnit#0" />
+            <element signature="method#getSoldierById#0;class#ArcherUnit#0" />
+            <element signature="method#killSoldierById#0;class#ArcherUnit#0" />
+            <element signature="method#getRandomSoldier#0;class#ArcherUnit#0" />
+            <element signature="method#trainSoldiers#0;class#ArcherUnit#0" />
+            <element signature="method#rest#0;class#ArcherUnit#0" />
+            <element signature="method#nextFewYears#0;class#ArcherUnit#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="59" column="66" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="59" column="66" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getSoldierById#0;class#ArcherGuild#0" />
+            <element signature="method#getUnitById#0;class#ArcherGuild#0" />
+            <element signature="method#nextFewYears#0;class#ArcherGuild#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/guilds/RangerGuild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="59" column="74" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -487,52 +537,116 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/guilds/LightInfantrymanGuild.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        <state relative-caret-position="573">
+          <caret line="59" column="84" selection-start-line="59" selection-start-column="84" selection-end-line="59" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/guilds/KnightGuild.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="573">
+          <caret line="59" column="76" lean-forward="true" selection-start-line="59" selection-start-column="76" selection-end-line="59" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domain/guilds/HeavyInfantrymanGuild.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/guilds/ChariotArcherGuild.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/guilds/BallistaGuild.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/guilds/ArcherGuild.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domain/units/RangerUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        <state relative-caret-position="573">
+          <caret line="59" column="84" selection-start-line="59" selection-start-column="84" selection-end-line="59" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Soldier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#750#751#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="method#rest#0;class#Soldier#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/individuals/Archer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#372#373#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="method#printSoldier#0;class#Archer#0" />
+            <element signature="method#rating#0;class#Archer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/Enrollment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="225" selection-start-line="225" selection-end-line="225" />
+          <folding>
+            <element signature="method#withType#0;class#Enrollment#0" />
+            <element signature="method#withWatchfullness#0;class#Enrollment#0" />
+            <element signature="method#withSpeed#0;class#Enrollment#0" />
+            <element signature="method#withCooldown#0;class#Enrollment#0" />
+            <element signature="method#withSwordDamage#0;class#Enrollment#0" />
+            <element signature="method#withArmour#0;class#Enrollment#0" />
+            <element signature="method#withAgility#0;class#Enrollment#0" />
+            <element signature="method#withSurvivalRate#0;class#Enrollment#0" />
+            <element signature="method#withStealth#0;class#Enrollment#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/guilds/Guild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="115" column="5" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domain/Senate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="174" column="5" lean-forward="true" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getSoldierById#0;class#Senate#0" />
+            <element signature="method#getUnitById#0;class#Senate#0" />
+            <element signature="method#killSoldierById#0;class#Senate#0" />
+            <element signature="method#trainUnitById#0;class#Senate#0" />
+            <element signature="method#restUnitById#0;class#Senate#0" />
           </folding>
         </state>
       </provider>
