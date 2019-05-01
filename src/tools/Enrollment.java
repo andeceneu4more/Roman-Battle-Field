@@ -5,6 +5,7 @@ import domain.individuals.*;
 public class Enrollment
 {
     private String type;
+    private static int soldierId = 0;
     private final Archer archer = new Archer();
     private final Ballister ballister = new Ballister();
     private final ChariotArcher chariotArcher = new ChariotArcher();
@@ -15,7 +16,38 @@ public class Enrollment
 
     public Enrollment withType(String typpe)
     {
+        soldierId++;
         type = typpe;
+        switch (type)
+        {
+            case "Archer":
+                archer.setSoldierId(soldierId);
+                break;
+
+            case "Ballister":
+                ballister.setSoldierId(soldierId);
+                break;
+
+            case "ChariotArcher":
+                chariotArcher.setSoldierId(soldierId);
+                break;
+
+            case "HeavyInfantryman":
+                legionar.setSoldierId(soldierId);
+                break;
+
+            case "Knight":
+                knight.setSoldierId(soldierId);
+                break;
+
+            case "LightInfantryman":
+                lightLegionar.setSoldierId(soldierId);
+                break;
+
+            case "Ranger":
+                ranger.setSoldierId(soldierId);
+                break;
+        }
         return this;
     }
 
@@ -300,37 +332,37 @@ public class Enrollment
 
     public Archer enrollArcher()
     {
-        return archer;
+        return archer.copy();
     }
 
     public Ballister enrollBallister()
     {
-        return ballister;
+        return ballister.copy();
     }
 
     public ChariotArcher enrollChariotArcher()
     {
-        return chariotArcher;
+        return chariotArcher.copy();
     }
 
     public HeavyInfantryman enrollHeavyInfantryman()
     {
-        return legionar;
+        return legionar.copy();
     }
 
     public Knight enrollKnight()
     {
-        return knight;
+        return knight.copy();
     }
 
     public LightInfantryman enrollLightInfantryman()
     {
-        return lightLegionar;
+        return lightLegionar.copy();
     }
 
     public Ranger enrollRanger()
     {
-        return ranger;
+        return ranger.copy();
     }
 
 }

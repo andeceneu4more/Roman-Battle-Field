@@ -4,6 +4,9 @@ import domain.individuals.HeavyInfantryman;
 import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class HeavyInfantrymanUnit extends Unit
@@ -33,18 +36,24 @@ public class HeavyInfantrymanUnit extends Unit
 
     public void rating()
     {
-        damage = 0;
-        meleeStrength = 0;
-        for (int i = 0; i < formation.size(); i++)
+        try
         {
-            damage += formation.elementAt(i).damage();
-            meleeStrength += formation.elementAt(i).strength();
+            damage = 0;
+            meleeStrength = 0;
+            for (int i = 0; i < formation.size(); i++) {
+                damage += formation.elementAt(i).damage();
+                meleeStrength += formation.elementAt(i).strength();
+            }
+            double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                    (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
+            rangedStrength = Math.round(Defaults.HEAVY_RANGED_RATIO * commanderRatio * meleeStrength * discipline);
+            meleeStrength = Math.round(Defaults.HEAVY_MELEE_RATIO * commanderRatio * meleeStrength * discipline);
+            damage = Defaults.HEAVY_DAMAGE_RATIO * commanderRatio * damage * discipline;
         }
-        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
-                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
-        rangedStrength = Math.round(Defaults.HEAVY_RANGED_RATIO * commanderRatio * meleeStrength * discipline);
-        meleeStrength = Math.round(Defaults.HEAVY_MELEE_RATIO * commanderRatio * meleeStrength * discipline);
-        damage = Defaults.HEAVY_DAMAGE_RATIO * commanderRatio * damage * discipline;
+        catch (ArithmeticException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public Soldier getSoldierById(int id)
@@ -85,10 +94,9 @@ public class HeavyInfantrymanUnit extends Unit
 
     public void trainSoldiers(Fate fate)
     {
-
-        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
-        discipline += 0.1;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
+            discipline += Defaults.DISCIPLINE_STEP;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
         int i;
@@ -124,5 +132,17 @@ public class HeavyInfantrymanUnit extends Unit
                 i--;
             }
         }
+    }
+
+    public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
+    {
+        String line;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            line = formation.elementAt(i).getSoldierData().toString();
+            buffer.write(line, 0, line.length());
+            buffer.newLine();
+        }
+        return buffer;
     }
 }

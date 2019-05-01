@@ -53,4 +53,48 @@ public class ChariotArcher extends Archer
         speed = (1 + impact) * speed;
         cooldown = (1 - impact) * cooldown;
     }
+
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId );
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(rangeDamage);
+        line.append(',');
+        line.append(criticalHitRate);
+        line.append(',');
+        line.append(speed);
+        line.append(',');
+        line.append(cooldown);
+        return line;
+    }
+
+    public ChariotArcher copy()
+    {
+        ChariotArcher chariotArcher = new ChariotArcher();
+        chariotArcher.soldierId = this.soldierId;
+        chariotArcher.unitId = this.unitId;
+        chariotArcher.name = this.name;
+        chariotArcher.health = this.health;
+        chariotArcher.stamina = this.stamina;
+        chariotArcher.xp = this.xp;
+        chariotArcher.age = this.age;
+        chariotArcher.rangeDamage = this.rangeDamage;
+        chariotArcher.criticalHitRate = this.criticalHitRate;
+        chariotArcher.speed = this.speed;
+        chariotArcher.cooldown = this.cooldown;
+        return chariotArcher;
+    }
 }

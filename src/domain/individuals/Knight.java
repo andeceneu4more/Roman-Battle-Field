@@ -49,4 +49,42 @@ public class Knight extends Soldier
         swordDamage = (int) Math.round((1 + impact) * swordDamage);
         speed = (1 + impact) * speed;
     }
+
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId );
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(swordDamage);
+        line.append(',');
+        line.append(speed);
+        return line;
+    }
+
+    public Knight copy()
+    {
+        Knight knight = new Knight();
+        knight.soldierId = this.soldierId;
+        knight.unitId = this.unitId;
+        knight.name = this.name;
+        knight.health = this.health;
+        knight.stamina = this.stamina;
+        knight.xp = this.xp;
+        knight.age = this.age;
+        knight.swordDamage = this.swordDamage;
+        knight.speed = this.speed;
+        return knight;
+    }
 }

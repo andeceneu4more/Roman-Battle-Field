@@ -56,4 +56,42 @@ public class LightInfantryman extends Soldier
         swordDamage = (int) Math.round((1 + impact) * swordDamage);
         agility = (int) Math.round((1 + impact) * agility);
     }
+
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId );
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(swordDamage);
+        line.append(',');
+        line.append(agility);
+        return line;
+    }
+
+    public LightInfantryman copy()
+    {
+        LightInfantryman lightLegionar = new LightInfantryman();
+        lightLegionar.soldierId = this.soldierId;
+        lightLegionar.unitId = this.unitId;
+        lightLegionar.name = this.name;
+        lightLegionar.health = this.health;
+        lightLegionar.stamina = this.stamina;
+        lightLegionar.xp = this.xp;
+        lightLegionar.age = this.age;
+        lightLegionar.swordDamage = this.swordDamage;
+        lightLegionar.agility = this.agility;
+        return lightLegionar;
+    }
 }

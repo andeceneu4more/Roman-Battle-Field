@@ -4,8 +4,7 @@ import tools.Defaults;
 
 public abstract class Soldier
 {
-    protected  static int generalSoldierID = 0;
-    protected  String name;
+    protected String name;
     protected int age;
     protected int soldierId;
     protected int unitId;
@@ -15,7 +14,6 @@ public abstract class Soldier
     {
         this.name = Defaults.NAME;
         this.age = Defaults.MINIMUM_AGE;
-        this.soldierId = ++generalSoldierID;
         this.health = Defaults.HEALTH;
         this.xp = Defaults.MINIMUM_XP;
         this.stamina = Defaults.STAMINA;
@@ -49,6 +47,11 @@ public abstract class Soldier
     public void setXp(int xp)
     {
         this.xp = xp;
+    }
+
+    public void setSoldierId(int soldierId)
+    {
+        this.soldierId = soldierId;
     }
 
     public int getSoldierId()
@@ -86,4 +89,5 @@ public abstract class Soldier
     }
 
     public abstract void train(double impact);
+    public abstract StringBuilder getSoldierData();
 }

@@ -120,22 +120,22 @@ public class Senate
         chariotArcherMaster.nextFewYears(years);
         heavyInfantrymanMaster.nextFewYears(years);
         knightMaster.nextFewYears(years);
-        knightMaster.nextFewYears(years);
         lightInfantrymanMaster.nextFewYears(years);
         rangerMaster.nextFewYears(years);
     }
 
     public void readSoldiers()
     {
-        String csvPath = new File("src/csv/Soldiers.csv").getAbsolutePath();
+        String csvPath = new File("src/csv/soldiers.csv").getAbsolutePath();
         try
         {
             BufferedReader buffer = new BufferedReader(new FileReader(csvPath));
             String firstLine = buffer.readLine();
             String line = "";
+            String[] attributes;
             while ((line = buffer.readLine()) != null)
             {
-                String[] attributes = line.split(",");
+                attributes = line.split(",");
                 switch (attributes[0])
                 {
                     case "Archer":
@@ -173,6 +173,29 @@ public class Senate
             exception.printStackTrace();
         }
     }
+
+    public void writeSoldiers()
+    {
+        archerMaster.writeSoldiers();
+        ballistaMaster.writeSoldiers();
+        chariotArcherMaster.writeSoldiers();
+        heavyInfantrymanMaster.writeSoldiers();
+        knightMaster.writeSoldiers();
+        lightInfantrymanMaster.writeSoldiers();
+        rangerMaster.writeSoldiers();
+    }
+
+    public void rating()
+    {
+        archerMaster.rating();
+        ballistaMaster.rating();
+        chariotArcherMaster.rating();
+        heavyInfantrymanMaster.rating();
+        knightMaster.rating();
+        lightInfantrymanMaster.rating();
+        rangerMaster.rating();
+    }
+
     // decimarea intr-un guild
     // fight dintre 2 unitati
     // => recompensarea unui soldat + moartea a catorva soldati random

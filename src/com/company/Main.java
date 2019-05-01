@@ -1,8 +1,7 @@
 package com.company;
 
 import domain.Senate;
-import domain.individuals.*;
-import domain.units.*;
+import tools.Defaults;
 
 public class Main
 {
@@ -10,5 +9,7 @@ public class Main
     {
         Senate spqr = new Senate();
         spqr.readSoldiers();
+        spqr.rating();
+        spqr.writeSoldiers();
     }
 }

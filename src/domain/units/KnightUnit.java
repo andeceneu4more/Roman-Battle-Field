@@ -5,6 +5,8 @@ import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class KnightUnit extends Unit
@@ -23,28 +25,25 @@ public class KnightUnit extends Unit
         formation.addElement(element);
     }
 
-    public void printUnit()
-    {
-        System.out.println("Knight Unit");
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).printSoldier();
-        }
-    }
-
     public void rating()
     {
-        double rating = 0;
-        for (int i = 0; i < formation.size(); i++)
+        try
         {
-            rating += formation.elementAt(i).rating();
+            double rating = 0;
+            for (int i = 0; i < formation.size(); i++) {
+                rating += formation.elementAt(i).rating();
+            }
+            double commanderRatio = 1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                    (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE));
+            rating = discipline * rating;
+            rangedStrength = Math.round(Defaults.KNIGHT_RANGED_RATIO * commanderRatio * rating);
+            meleeStrength = Math.round(Defaults.KNIGHT_MELEE_RATIO * commanderRatio * rating);
+            damage = Defaults.KNIGHT_DAMAGE_RATIO * commanderRatio * rating;
         }
-        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
-                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
-        rating = discipline * rating;
-        rangedStrength = Math.round(Defaults.KNIGHT_RANGED_RATIO * commanderRatio * rating);
-        meleeStrength = Math.round(Defaults.KNIGHT_MELEE_RATIO * commanderRatio * rating);
-        damage = Defaults.KNIGHT_DAMAGE_RATIO * commanderRatio * rating;
+        catch (ArithmeticException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public Soldier getSoldierById(int id)
@@ -85,10 +84,9 @@ public class KnightUnit extends Unit
 
     public void trainSoldiers(Fate fate)
     {
-
-        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
-        discipline += 0.1;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
+            discipline += Defaults.DISCIPLINE_STEP;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
         int i;
@@ -126,4 +124,15 @@ public class KnightUnit extends Unit
         }
     }
 
+    public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
+    {
+        String line;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            line = formation.elementAt(i).getSoldierData().toString();
+            buffer.write(line, 0, line.length());
+            buffer.newLine();
+        }
+        return buffer;
+    }
 }

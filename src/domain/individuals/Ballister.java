@@ -1,5 +1,6 @@
 package domain.individuals;
 
+import domain.units.Ballista;
 import tools.Defaults;
 
 public class Ballister extends Soldier
@@ -41,4 +42,38 @@ public class Ballister extends Soldier
         watchfullness = (int) Math.round((1 + impact) * watchfullness);
     }
 
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId );
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(watchfullness);
+        return line;
+    }
+
+    public Ballister copy()
+    {
+        Ballister ballister = new Ballister();
+        ballister.soldierId = this.soldierId;
+        ballister.unitId = this.unitId;
+        ballister.name = this.name;
+        ballister.health = this.health;
+        ballister.stamina = this.stamina;
+        ballister.xp = this.xp;
+        ballister.age = this.age;
+        ballister.watchfullness = this.watchfullness;
+        return ballister;
+    }
 }

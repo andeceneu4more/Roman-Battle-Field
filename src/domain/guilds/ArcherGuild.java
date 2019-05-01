@@ -5,6 +5,10 @@ import domain.units.ArcherUnit;
 import domain.units.Unit;
 import tools.Defaults;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class ArcherGuild extends Guild
@@ -14,7 +18,6 @@ public class ArcherGuild extends Guild
     public ArcherGuild()
     {
         this.members = new Vector <ArcherUnit>();
-        this.recruitment.withType("Archer");
     }
 
     public Soldier getSoldierById(int id)
@@ -37,7 +40,7 @@ public class ArcherGuild extends Guild
         for (i = 0; i < members.size(); i++)
         {
             wanted = members.elementAt(i);
-            if (wanted.getUnitId() == id)
+            if (wanted.getDiscipline() == id)
                 return wanted;
         }
         return null;
@@ -53,12 +56,46 @@ public class ArcherGuild extends Guild
     public void addSoldier()
     {
         int i;
-        for (i = 0; i < members.size(); i++)
+        boolean added = false;
+        for (i = 0; i < members.size() && (!added); i++)
         {
-            if (members.elementAt(i).getUnitSize() < Defaults.UNITY_CAPACITY)
+            if (members.elementAt(i).getUnitSize() < Defaults.UNIT_CAPACITY)
             {
                 members.elementAt(i).addSoldier(recruitment.enrollArcher());
+                added = true;
             }
         }
+        if (!added)
+        {
+            ArcherUnit unity = new ArcherUnit();
+            unity.addSoldier(recruitment.enrollArcher());
+            members.addElement(unity);
+        }
     }
+
+    public void writeSoldiers()
+    {
+        try
+        {
+            File writing = new File("src/csv/archer-master.csv");
+            BufferedWriter buffer = new BufferedWriter(new FileWriter(writing));
+            buffer.write(Defaults.ARCHERS_HEADER, 0, Defaults.ARCHERS_HEADER.length());
+            buffer.newLine();
+            for (int i = 0; i < members.size(); i++)
+                buffer = members.elementAt(i).writeSoldiers(buffer);
+            buffer.close();
+        }
+        catch (IOException exception)
+        {
+            exception.printStackTrace();
+        }
+    }
+
+    public void rating()
+    {
+        for (int i = 0; i < members.size(); i++)
+            members.elementAt(i).rating();
+    }
+
+
 }

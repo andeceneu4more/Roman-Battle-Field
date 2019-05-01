@@ -1,5 +1,7 @@
 package domain.units;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.lang.*;
 import java.util.*;
 import domain.individuals.Archer;
@@ -23,29 +25,25 @@ public class ArcherUnit extends Unit
         formation.addElement(element);
     }
 
-    public void printUnit()
-    {
-        System.out.println("Archer Unit");
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).printSoldier();
-        }
-    }
     public void rating()
     {
-        double rating = 0;
-        for (int i = 0; i < formation.size(); i++)
+        try
         {
-            rating += formation.elementAt(i).rating();
+            double rating = 0;
+            for (int i = 0; i < formation.size(); i++) {
+                rating += formation.elementAt(i).rating();
+            }
+            double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                    (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
+            rating = commanderRatio * rating;
+            rangedStrength = Math.round(Defaults.ARCHERS_RANGED_RATIO * rating);
+            meleeStrength = Math.round(Defaults.ARCHERS_MELEE_RATIO * rating);
+            damage = Defaults.ARCHERS_DAMAGE_RATIO * rating;
         }
-        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
-                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
-
-        rating = commanderRatio * rating;
-        rating = discipline * rating;
-        rangedStrength = Math.round(Defaults.ARCHERS_RANGED_RATIO * rating);
-        meleeStrength = Math.round(Defaults.ARCHERS_MELEE_RATIO * rating);
-        damage = Defaults.ARCHERS_DAMAGE_RATIO * rating;
+        catch (ArithmeticException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public Soldier getSoldierById(int id)
@@ -86,10 +84,9 @@ public class ArcherUnit extends Unit
 
     public void trainSoldiers(Fate fate)
     {
-
-        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
-        discipline += 0.1;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
+            discipline += Defaults.DISCIPLINE_STEP;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
         int i;
@@ -125,5 +122,17 @@ public class ArcherUnit extends Unit
                 i--;
             }
         }
+    }
+
+    public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
+    {
+        String line;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            line = formation.elementAt(i).getSoldierData().toString();
+            buffer.write(line,0, line.length());
+            buffer.newLine();
+        }
+        return buffer;
     }
 }

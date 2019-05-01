@@ -5,6 +5,8 @@ import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class RangerUnit extends Unit
@@ -23,30 +25,27 @@ public class RangerUnit extends Unit
         formation.addElement(element);
     }
 
-    public void printUnit()
-    {
-        System.out.println("Ranger Unit");
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).printSoldier();
-        }
-    }
-
     public void rating()
     {
-        double rating = 0;
-        for (int i = 0; i < formation.size(); i++)
+        try
         {
-            rating += formation.elementAt(i).rating();
-        }
-        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
-                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
+            double rating = 0;
+            for (int i = 0; i < formation.size(); i++) {
+                rating += formation.elementAt(i).rating();
+            }
+            double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                    (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
 
-        rating = commanderRatio * rating;
-        rating = discipline * rating;
-        rangedStrength = Math.round(Defaults.RANGER_RANGED_RATIO * rating);
-        meleeStrength = Math.round(Defaults.RANGER_MELEE_RATIO * rating);
-        damage = Defaults.RANGER_DAMAGE_RATIO * rating;
+            rating = commanderRatio * rating;
+            rating = discipline * rating;
+            rangedStrength = Math.round(Defaults.RANGER_RANGED_RATIO * rating);
+            meleeStrength = Math.round(Defaults.RANGER_MELEE_RATIO * rating);
+            damage = Defaults.RANGER_DAMAGE_RATIO * rating;
+        }
+        catch (ArithmeticException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public Soldier getSoldierById(int id)
@@ -87,10 +86,9 @@ public class RangerUnit extends Unit
 
     public void trainSoldiers(Fate fate)
     {
-
-        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
-        discipline += 0.1;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
+            discipline += Defaults.DISCIPLINE_STEP;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
         int i;
@@ -126,5 +124,17 @@ public class RangerUnit extends Unit
                 i--;
             }
         }
+    }
+
+    public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
+    {
+        String line;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            line = formation.elementAt(i).getSoldierData().toString();
+            buffer.write(line, 0, line.length());
+            buffer.newLine();
+        }
+        return buffer;
     }
 }

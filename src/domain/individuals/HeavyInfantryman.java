@@ -56,4 +56,42 @@ public class HeavyInfantryman extends Soldier
         swordDamage = (int) Math.round((1 + impact) * swordDamage);
         armour = (int) Math.round((1 + impact) * armour);
     }
+
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId );
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(swordDamage);
+        line.append(',');
+        line.append(armour);
+        return line;
+    }
+
+    public HeavyInfantryman copy()
+    {
+        HeavyInfantryman legionar = new HeavyInfantryman();
+        legionar.soldierId = this.soldierId;
+        legionar.unitId = this.unitId;
+        legionar.name = this.name;
+        legionar.health = this.health;
+        legionar.stamina = this.stamina;
+        legionar.xp = this.xp;
+        legionar.age = this.age;
+        legionar.swordDamage = this.swordDamage;
+        legionar.armour = this.armour;
+        return legionar;
+    }
 }

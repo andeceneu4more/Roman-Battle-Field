@@ -5,6 +5,8 @@ import domain.individuals.Soldier;
 import services.Fate;
 import tools.Defaults;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Vector;
 
 public class ChariotArcherUnit extends Unit
@@ -23,13 +25,6 @@ public class ChariotArcherUnit extends Unit
         formation.addElement(element);
     }
 
-    public void printUnit()
-    {
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).printSoldier();
-        }
-    }
     public void rating()
     {
         double rating = 0;
@@ -37,8 +32,8 @@ public class ChariotArcherUnit extends Unit
         {
             rating += formation.elementAt(i).rating();
         }
-        double commanderRatio = (1 + ((abilities - Defaults.MINIMUM_ABILITIES) /
-                (Defaults.MAXIMUM_ABILITIES - Defaults.MINIMUM_ABILITIES)));
+        double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
 
         rating = commanderRatio * rating;
         rating = discipline * rating;
@@ -85,10 +80,9 @@ public class ChariotArcherUnit extends Unit
 
     public void trainSoldiers(Fate fate)
     {
-
-        abilities = (int) Math.round(abilities * Defaults.TRAINING_ABILITY);
-        discipline += 0.1;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / 3;
+        if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
+            discipline += Defaults.DISCIPLINE_STEP;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
         int i;
@@ -124,6 +118,18 @@ public class ChariotArcherUnit extends Unit
                 i--;
             }
         }
+    }
+
+    public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
+    {
+        String line;
+        for (int i = 0; i < formation.size(); i++)
+        {
+            line = formation.elementAt(i).getSoldierData().toString();
+            buffer.write(line, 0, line.length());
+            buffer.newLine();
+        }
+        return buffer;
     }
 }
 

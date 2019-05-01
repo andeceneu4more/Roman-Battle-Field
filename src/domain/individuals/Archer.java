@@ -50,4 +50,42 @@ public class Archer extends Soldier
         rangeDamage = (int) Math.round((1 + impact) * rangeDamage);
         criticalHitRate = (1 + impact) * rangeDamage;
     }
+
+    public StringBuilder getSoldierData()
+    {
+        StringBuilder line = new StringBuilder("");
+        line.append(soldierId);
+        line.append(',');
+        line.append(unitId);
+        line.append(',');
+        line.append(name);
+        line.append(',');
+        line.append(health);
+        line.append(',');
+        line.append(stamina );
+        line.append(',');
+        line.append(xp);
+        line.append(',');
+        line.append(age);
+        line.append(',');
+        line.append(rangeDamage);
+        line.append(',');
+        line.append(criticalHitRate);
+        return line;
+    }
+
+    public Archer copy()
+    {
+        Archer archer = new Archer();
+        archer.soldierId = this.soldierId;
+        archer.unitId = this.unitId;
+        archer.name = this.name;
+        archer.health = this.health;
+        archer.stamina = this.stamina;
+        archer.xp = this.xp;
+        archer.age = this.age;
+        archer.rangeDamage = this.rangeDamage;
+        archer.criticalHitRate = this.criticalHitRate;
+        return archer;
+    }
 }

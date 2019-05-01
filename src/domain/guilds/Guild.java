@@ -31,6 +31,10 @@ public abstract class Guild
                 {
                     switch (attributeName)
                     {
+                        case "Soldier Class":
+                            recruitment.withType(attributes[i]);
+                            break;
+
                         case "Name":
                             recruitment.withName(attributes[i]);
                             break;
@@ -114,4 +118,7 @@ public abstract class Guild
             exception.printStackTrace();
         }
     }
+    public abstract void writeSoldiers();
+    public abstract void rating();
+
 }
