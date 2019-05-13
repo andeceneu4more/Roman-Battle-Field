@@ -3,6 +3,7 @@ package domain.guilds;
 import domain.individuals.Soldier;
 import domain.units.HeavyInfantrymanUnit;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
@@ -71,6 +72,7 @@ public class HeavyInfantrymanGuild extends Guild
             unity.addSoldier(recruitment.enrollHeavyInfantryman());
             members.addElement(unity);
         }
+        AuditLog.stamp("HeavyInfantryman.addSoldier");
     }
 
     public void writeSoldiers()
@@ -89,11 +91,13 @@ public class HeavyInfantrymanGuild extends Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("HeavyInfantryman.writeSoldiers");
     }
 
     public void rating()
     {
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
+        AuditLog.stamp("HeavyInfantryman.rating");
     }
 }

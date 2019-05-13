@@ -3,26 +3,28 @@ package domain.units;
 import domain.individuals.LightInfantryman;
 import domain.individuals.Soldier;
 import services.Fate;
+import services.SoldierComparator;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Vector;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 public class LightInfantrymanUnit extends Unit
 {
-    private Vector <LightInfantryman> formation;
+    private TreeSet<LightInfantryman> formation;
 
     public LightInfantrymanUnit()
     {
         this.unitId = ++generalUnitId;
-        this.formation = new Vector <LightInfantryman>();
+        this.formation = new TreeSet <LightInfantryman>(new SoldierComparator());
     }
 
     public void addSoldier(LightInfantryman element)
     {
         element.setUnitId(unitId);
-        formation.addElement(element);
+        formation.add(element);
     }
 
     public void rating()
@@ -31,9 +33,10 @@ public class LightInfantrymanUnit extends Unit
         {
             damage = 0;
             meleeStrength = 0;
-            for (int i = 0; i < formation.size(); i++) {
-                damage += formation.elementAt(i).damage();
-                meleeStrength += formation.elementAt(i).strength();
+            for (LightInfantryman element : formation)
+            {
+                damage += element.damage();
+                meleeStrength += element.strength();
             }
             double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
                     (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
@@ -50,10 +53,10 @@ public class LightInfantrymanUnit extends Unit
 
     public Soldier getSoldierById(int id)
     {
-        for (int i = 0; i < formation.size(); i++)
+        for (LightInfantryman element : formation)
         {
-            if (formation.elementAt(i).getSoldierId() == id)
-                return formation.elementAt(i);
+            if (element.getSoldierId() == id)
+                return element;
         }
         return null;
     }
@@ -65,41 +68,43 @@ public class LightInfantrymanUnit extends Unit
 
     public void killSoldierById(int id)
     {
-        LightInfantryman wanted;
-        boolean found = false;
-        for (int i = 0; i < formation.size() && !found; i++)
+        for (LightInfantryman wanted : formation)
         {
-            wanted = formation.elementAt(i);
             if (wanted.getSoldierId() == id)
             {
-                formation.removeElement(wanted);
-                found = true;
+                formation.remove(wanted);
+                break;
             }
         }
     }
 
-    public Soldier getRandomSoldier()
+    public LightInfantryman getRandomSoldier()
     {
-        int index = (int) Math.round(Math.random() * getUnitSize());
-        return formation.elementAt(index);
+        int index = (int) Math.round(Math.random() * (formation.size() - 1));
+        for (LightInfantryman element : formation)
+        {
+            if (index == 0)
+            {
+                return element;
+            }
+            index--;
+        }
+        return null;
     }
 
     public void trainSoldiers(Fate fate)
     {
         if (discipline + Defaults.DISCIPLINE_STEP < Defaults.MAXIMUM_DISCIPLE)
             discipline += Defaults.DISCIPLINE_STEP;
-        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) /Defaults.FACTORS;
+        double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
-        int i;
-        for (i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).trainSoldier(uniformImpact);
-        }
+        for(LightInfantryman element : formation)
+            element.trainSoldier(uniformImpact);
         // biased training
         double biasedImpact = impact * Defaults.BIASED_RATIO;
         int sample = (int) Math.round(getUnitSize() * Defaults.BIASED_PERCENT);
-        for (i = 0; i < sample; i++)
+        for (int i = 0; i < sample; i++)
         {
             getRandomSoldier().train(biasedImpact);
         }
@@ -107,21 +112,18 @@ public class LightInfantrymanUnit extends Unit
 
     public void rest()
     {
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).rest();
-        }
+        for (LightInfantryman element : formation)
+            element.rest();
     }
 
     public void nextFewYears(int years)
     {
-        for (int i = 0; i < formation.size(); i++)
+        for (LightInfantryman element : formation)
         {
-            formation.elementAt(i).nextFewYears(years);
-            if (formation.elementAt(i).ifRetired())
+            element.nextFewYears(years);
+            if (element.ifRetired())
             {
-                formation.removeElementAt(i);
-                i--;
+                formation.remove(element);
             }
         }
     }
@@ -129,10 +131,10 @@ public class LightInfantrymanUnit extends Unit
     public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
     {
         String line;
-        for (int i = 0; i < formation.size(); i++)
+        for (LightInfantryman element : formation)
         {
-            line = formation.elementAt(i).getSoldierData().toString();
-            buffer.write(line, 0, line.length());
+            line = element.getSoldierData().toString();
+            buffer.write(line,0, line.length());
             buffer.newLine();
         }
         return buffer;

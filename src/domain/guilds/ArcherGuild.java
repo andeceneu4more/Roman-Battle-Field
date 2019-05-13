@@ -3,6 +3,7 @@ package domain.guilds;
 import domain.individuals.Soldier;
 import domain.units.ArcherUnit;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
@@ -71,6 +72,7 @@ public class ArcherGuild extends Guild
             unity.addSoldier(recruitment.enrollArcher());
             members.addElement(unity);
         }
+        AuditLog.stamp("ArcherGuild.addSoldier");
     }
 
     public void writeSoldiers()
@@ -89,12 +91,14 @@ public class ArcherGuild extends Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("ArcherGuild.writeSoldiers");
     }
 
     public void rating()
     {
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
+        AuditLog.stamp("ArcherGuild.rating");
     }
 
 

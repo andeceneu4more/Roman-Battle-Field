@@ -3,6 +3,7 @@ package domain.guilds;
 import domain.individuals.Soldier;
 import domain.units.RangerUnit;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
@@ -71,6 +72,7 @@ public class RangerGuild extends Guild
             unity.addSoldier(recruitment.enrollRanger());
             members.addElement(unity);
         }
+        AuditLog.stamp("Ranger.addSoldier");
     }
 
     public void writeSoldiers()
@@ -89,11 +91,13 @@ public class RangerGuild extends Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("Ranger.writeSoldier");
     }
 
     public void rating()
     {
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
+        AuditLog.stamp("Ranger.rating");
     }
 }

@@ -2,6 +2,7 @@ package domain.guilds;
 
 import domain.individuals.Soldier;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Enrollment;
 
 import java.io.IOException;
@@ -117,6 +118,7 @@ public abstract class Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp(attributes[0] + "Guild.read");
     }
     public abstract void writeSoldiers();
     public abstract void rating();

@@ -3,6 +3,7 @@ package domain.guilds;
 import domain.individuals.Soldier;
 import domain.units.LightInfantrymanUnit;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
@@ -71,6 +72,7 @@ public class LightInfantrymanGuild extends Guild
             unity.addSoldier(recruitment.enrollLightInfantryman());
             members.addElement(unity);
         }
+        AuditLog.stamp("LightInfantryman.addSoldier");
     }
 
     public void writeSoldiers()
@@ -89,12 +91,14 @@ public class LightInfantrymanGuild extends Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("LightInfantryman.writeSoldiers");
     }
 
     public void rating()
     {
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
+        AuditLog.stamp("LightInfantryman.rating");
     }
 }
 

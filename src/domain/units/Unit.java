@@ -43,5 +43,7 @@ public abstract class Unit
     public abstract void nextFewYears(int years);
 
     public abstract BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException;
-//    public abstract void decimate(int iterator);
+
+    //    public abstract void decimate(int iterator);
+
 }

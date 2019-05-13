@@ -3,51 +3,57 @@ package domain.units;
 import domain.individuals.ChariotArcher;
 import domain.individuals.Soldier;
 import services.Fate;
+import services.SoldierComparator;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Vector;
+import java.util.TreeSet;
 
 public class ChariotArcherUnit extends Unit
 {
-    private Vector <ChariotArcher> formation;
+    private TreeSet<ChariotArcher> formation;
 
     public ChariotArcherUnit()
     {
         this.unitId = ++generalUnitId;
-        this.formation = new Vector <ChariotArcher>();
+        this.formation = new TreeSet <ChariotArcher>(new SoldierComparator());
     }
 
     public void addSoldier(ChariotArcher element)
     {
         element.setUnitId(unitId);
-        formation.addElement(element);
+        formation.add(element);
     }
 
     public void rating()
     {
-        double rating = 0;
-        for (int i = 0; i < formation.size(); i++)
+        try
         {
-            rating += formation.elementAt(i).rating();
-        }
-        double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
-                (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
+            double rating = 0;
+            for (ChariotArcher element : formation)
+                rating += element.rating();
+            double commanderRatio = (1 + ((discipline - Defaults.MINIMUM_DISCIPLINE) /
+                    (Defaults.MAXIMUM_DISCIPLE - Defaults.MINIMUM_DISCIPLINE)));
 
-        rating = commanderRatio * rating;
-        rating = discipline * rating;
-        rangedStrength = Math.round(Defaults.CHARIOT_RANGED_RATIO * rating);
-        meleeStrength = Math.round(Defaults.CHARIOT_MELEE_RATIO * rating);
-        damage = Defaults.CHARIOT_DAMAGE_RATIO * rating;
+            rating = commanderRatio * rating;
+            rating = discipline * rating;
+            rangedStrength = Math.round(Defaults.CHARIOT_RANGED_RATIO * rating);
+            meleeStrength = Math.round(Defaults.CHARIOT_MELEE_RATIO * rating);
+            damage = Defaults.CHARIOT_DAMAGE_RATIO * rating;
+        }
+        catch (ArithmeticException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public Soldier getSoldierById(int id)
     {
-        for (int i = 0; i < formation.size(); i++)
+        for (ChariotArcher element : formation)
         {
-            if (formation.elementAt(i).getSoldierId() == id)
-                return formation.elementAt(i);
+            if (element.getSoldierId() == id)
+                return element;
         }
         return null;
     }
@@ -59,23 +65,28 @@ public class ChariotArcherUnit extends Unit
 
     public void killSoldierById(int id)
     {
-        ChariotArcher wanted;
-        boolean found = false;
-        for (int i = 0; i < formation.size() && !found; i++)
+        for (ChariotArcher wanted : formation)
         {
-            wanted = formation.elementAt(i);
             if (wanted.getSoldierId() == id)
             {
-                formation.removeElement(wanted);
-                found = true;
+                formation.remove(wanted);
+                break;
             }
         }
     }
 
     public ChariotArcher getRandomSoldier()
     {
-        int index = (int) Math.round(Math.random() * getUnitSize());
-        return formation.elementAt(index);
+        int index = (int) Math.round(Math.random() * (formation.size() - 1));
+        for (ChariotArcher element : formation)
+        {
+            if (index == 0)
+            {
+                return element;
+            }
+            index--;
+        }
+        return null;
     }
 
     public void trainSoldiers(Fate fate)
@@ -85,15 +96,12 @@ public class ChariotArcherUnit extends Unit
         double impact = (fate.getWeather() + fate.getMotivation() + fate.getTerrain()) / Defaults.FACTORS;
         // uniform training
         double uniformImpact = impact * Defaults.UNIFORM_RATIO;
-        int i;
-        for (i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).trainSoldier(uniformImpact);
-        }
+        for(ChariotArcher element : formation)
+            element.trainSoldier(uniformImpact);
         // biased training
         double biasedImpact = impact * Defaults.BIASED_RATIO;
         int sample = (int) Math.round(getUnitSize() * Defaults.BIASED_PERCENT);
-        for (i = 0; i < sample; i++)
+        for (int i = 0; i < sample; i++)
         {
             getRandomSoldier().train(biasedImpact);
         }
@@ -101,21 +109,18 @@ public class ChariotArcherUnit extends Unit
 
     public void rest()
     {
-        for (int i = 0; i < formation.size(); i++)
-        {
-            formation.elementAt(i).rest();
-        }
+        for (ChariotArcher element : formation)
+            element.rest();
     }
 
     public void nextFewYears(int years)
     {
-        for (int i = 0; i < formation.size(); i++)
+        for (ChariotArcher element : formation)
         {
-            formation.elementAt(i).nextFewYears(years);
-            if (formation.elementAt(i).ifRetired())
+            element.nextFewYears(years);
+            if (element.ifRetired())
             {
-                formation.removeElementAt(i);
-                i--;
+                formation.remove(element);
             }
         }
     }
@@ -123,10 +128,10 @@ public class ChariotArcherUnit extends Unit
     public BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException
     {
         String line;
-        for (int i = 0; i < formation.size(); i++)
+        for (ChariotArcher element : formation)
         {
-            line = formation.elementAt(i).getSoldierData().toString();
-            buffer.write(line, 0, line.length());
+            line = element.getSoldierData().toString();
+            buffer.write(line,0, line.length());
             buffer.newLine();
         }
         return buffer;

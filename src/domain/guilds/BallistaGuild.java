@@ -3,6 +3,7 @@ package domain.guilds;
 import domain.individuals.Soldier;
 import domain.units.Ballista;
 import domain.units.Unit;
+import services.AuditLog;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
@@ -71,6 +72,7 @@ public class BallistaGuild extends Guild
             unity.addSoldier(recruitment.enrollBallister());
             members.addElement(unity);
         }
+        AuditLog.stamp("BallistaGuild.addSoldier");
     }
 
     public void writeSoldiers()
@@ -89,12 +91,14 @@ public class BallistaGuild extends Guild
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("BallistaGuild.writeSoldiers");
     }
 
     public void rating()
     {
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
+        AuditLog.stamp("BallistaGuild.rating");
     }
 }
 

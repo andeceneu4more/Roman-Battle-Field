@@ -3,9 +3,12 @@ package domain;
 import domain.guilds.*;
 import domain.individuals.Soldier;
 import domain.units.*;
+import services.AuditLog;
 import services.Fate;
 
 import java.io.*;
+
+import static services.AuditLog.*;
 
 public class Senate
 {
@@ -27,6 +30,7 @@ public class Senate
         knightMaster = new KnightGuild();
         lightInfantrymanMaster = new LightInfantrymanGuild();
         rangerMaster = new RangerGuild();
+        AuditLog.stamp("Senate.Senate");
     }
 
     public Soldier getSoldierById(int id)
@@ -172,6 +176,7 @@ public class Senate
         {
             exception.printStackTrace();
         }
+        AuditLog.stamp("Senate.readSoldiers");
     }
 
     public void writeSoldiers()
@@ -183,6 +188,7 @@ public class Senate
         knightMaster.writeSoldiers();
         lightInfantrymanMaster.writeSoldiers();
         rangerMaster.writeSoldiers();
+        AuditLog.stamp("Senate.writeSoldiers");
     }
 
     public void rating()
@@ -194,6 +200,7 @@ public class Senate
         knightMaster.rating();
         lightInfantrymanMaster.rating();
         rangerMaster.rating();
+        AuditLog.stamp("Senate.rating");
     }
 
     // decimarea intr-un guild
