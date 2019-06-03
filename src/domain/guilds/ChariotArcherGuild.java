@@ -5,6 +5,7 @@ import domain.units.ChariotArcherUnit;
 import domain.units.Unit;
 import services.AuditLog;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,7 +42,7 @@ public class ChariotArcherGuild extends Guild
         for (i = 0; i < members.size(); i++)
         {
             wanted = members.elementAt(i);
-            if (wanted.getDiscipline() == id)
+            if (wanted.getUnitId() == id)
                 return wanted;
         }
         return null;
@@ -99,5 +100,19 @@ public class ChariotArcherGuild extends Guild
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
         AuditLog.stamp("ChariotArcherGuild.rating");
+    }
+
+    public void writeDataBaseSoldiers()
+    {
+        try
+        {
+            Jdbc.initTable("chariot_archer", Defaults.CREATE_NEW_CHARIOT);
+            for (int i = 0; i < members.size(); i++)
+                members.elementAt(i).writeDataBaseSoldiers();
+        }
+        catch (RuntimeException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 }

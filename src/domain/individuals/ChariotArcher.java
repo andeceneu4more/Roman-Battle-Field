@@ -1,6 +1,11 @@
 package domain.individuals;
 
 import tools.Defaults;
+import tools.Jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class ChariotArcher extends Archer
 {
@@ -96,5 +101,31 @@ public class ChariotArcher extends Archer
         chariotArcher.speed = this.speed;
         chariotArcher.cooldown = this.cooldown;
         return chariotArcher;
+    }
+
+    public PreparedStatement insertSoldier()
+    {
+        try
+        {
+            Connection connection = Jdbc.getConnection();
+            PreparedStatement stmt =  connection.prepareStatement(Defaults.INSERT_NEW_CHARIOT);
+            stmt.setInt(1, soldierId);
+            stmt.setInt(2, unitId);
+            stmt.setString(3, name);
+            stmt.setInt(4, health);
+            stmt.setInt(5, stamina);
+            stmt.setInt(6, xp);
+            stmt.setInt(7, age);
+            stmt.setInt(8, rangeDamage);
+            stmt.setDouble(9, criticalHitRate);
+            stmt.setDouble(10, speed);
+            stmt.setDouble(11, cooldown);
+            return stmt;
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        return null;
     }
 }

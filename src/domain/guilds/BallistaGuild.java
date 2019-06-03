@@ -5,11 +5,13 @@ import domain.units.Ballista;
 import domain.units.Unit;
 import services.AuditLog;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class BallistaGuild extends Guild
@@ -41,7 +43,7 @@ public class BallistaGuild extends Guild
         for (i = 0; i < members.size(); i++)
         {
             wanted = members.elementAt(i);
-            if (wanted.getDiscipline() == id)
+            if (wanted.getUnitId() == id)
                 return wanted;
         }
         return null;
@@ -99,6 +101,24 @@ public class BallistaGuild extends Guild
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
         AuditLog.stamp("BallistaGuild.rating");
+    }
+
+    public void writeDataBaseSoldiers()
+    {
+        try
+        {
+            Jdbc.initTable("ballista", Defaults.CREATE_NEW_BALLISTA);
+            for (int i = 0; i < members.size(); i++)
+                members.elementAt(i).writeDataBaseSoldiers();
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        catch (RuntimeException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 }
 

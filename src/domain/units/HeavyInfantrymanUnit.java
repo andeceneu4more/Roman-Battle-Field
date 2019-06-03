@@ -5,10 +5,11 @@ import domain.individuals.Soldier;
 import services.Fate;
 import services.SoldierComparator;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Iterator;
+import java.sql.PreparedStatement;
 import java.util.TreeSet;
 
 public class HeavyInfantrymanUnit extends Unit
@@ -137,5 +138,15 @@ public class HeavyInfantrymanUnit extends Unit
             buffer.newLine();
         }
         return buffer;
+    }
+
+    public void writeDataBaseSoldiers() throws RuntimeException
+    {
+        PreparedStatement stmt;
+        for (HeavyInfantryman element : formation)
+        {
+            stmt = element.insertSoldier();
+            Jdbc.executeStatement(stmt);
+        }
     }
 }

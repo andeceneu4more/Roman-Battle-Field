@@ -2,6 +2,11 @@ package domain.individuals;
 
 import domain.units.Ballista;
 import tools.Defaults;
+import tools.Jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Ballister extends Soldier
 {
@@ -75,5 +80,28 @@ public class Ballister extends Soldier
         ballister.age = this.age;
         ballister.watchfullness = this.watchfullness;
         return ballister;
+    }
+
+    public PreparedStatement insertSoldier()
+    {
+        try
+        {
+            Connection connection = Jdbc.getConnection();
+            PreparedStatement stmt =  connection.prepareStatement(Defaults.INSERT_NEW_BALLISTA);
+            stmt.setInt(1, soldierId);
+            stmt.setInt(2, unitId);
+            stmt.setString(3, name);
+            stmt.setInt(4, health);
+            stmt.setInt(5, stamina);
+            stmt.setInt(6, xp);
+            stmt.setInt(7, age);
+            stmt.setInt(8, watchfullness);
+            return stmt;
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        return null;
     }
 }

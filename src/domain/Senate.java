@@ -1,10 +1,14 @@
 package domain;
 
 import domain.guilds.*;
+import domain.individuals.Archer;
 import domain.individuals.Soldier;
 import domain.units.*;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import services.AuditLog;
 import services.Fate;
+import tools.Jdbc;
 
 import java.io.*;
 
@@ -203,6 +207,32 @@ public class Senate
         AuditLog.stamp("Senate.rating");
     }
 
+    public void writeDataBaseSoldiers()
+    {
+        archerMaster.writeDataBaseSoldiers();
+        ballistaMaster.writeDataBaseSoldiers();
+        chariotArcherMaster.writeDataBaseSoldiers();
+        heavyInfantrymanMaster.writeDataBaseSoldiers();
+        knightMaster.writeDataBaseSoldiers();
+        lightInfantrymanMaster.writeDataBaseSoldiers();
+        rangerMaster.writeDataBaseSoldiers();
+    }
+
+
+    public ObservableList<Archer> getAllArchers()
+    {
+        return archerMaster.getAll();
+    }
+
+    public void addArcher(Archer object)
+    {
+        archerMaster.addSoldier(object);
+    }
+
+    public Archer getRandomArcher()
+    {
+        return archerMaster.getRandomSoldier();
+    }
     // decimarea intr-un guild
     // fight dintre 2 unitati
     // => recompensarea unui soldat + moartea a catorva soldati random

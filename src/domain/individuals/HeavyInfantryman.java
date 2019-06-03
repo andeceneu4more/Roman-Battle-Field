@@ -1,6 +1,11 @@
 package domain.individuals;
 
 import tools.Defaults;
+import tools.Jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class HeavyInfantryman extends Soldier
 {
@@ -93,5 +98,29 @@ public class HeavyInfantryman extends Soldier
         legionar.swordDamage = this.swordDamage;
         legionar.armour = this.armour;
         return legionar;
+    }
+
+    public PreparedStatement insertSoldier()
+    {
+        try
+        {
+            Connection connection = Jdbc.getConnection();
+            PreparedStatement stmt =  connection.prepareStatement(Defaults.INSERT_NEW_HEAVY);
+            stmt.setInt(1, soldierId);
+            stmt.setInt(2, unitId);
+            stmt.setString(3, name);
+            stmt.setInt(4, health);
+            stmt.setInt(5, stamina);
+            stmt.setInt(6, xp);
+            stmt.setInt(7, age);
+            stmt.setInt(8, swordDamage);
+            stmt.setInt(9, armour);
+            return stmt;
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        return null;
     }
 }

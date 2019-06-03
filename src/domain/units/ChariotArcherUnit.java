@@ -5,9 +5,11 @@ import domain.individuals.Soldier;
 import services.Fate;
 import services.SoldierComparator;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.util.TreeSet;
 
 public class ChariotArcherUnit extends Unit
@@ -135,6 +137,16 @@ public class ChariotArcherUnit extends Unit
             buffer.newLine();
         }
         return buffer;
+    }
+
+    public void writeDataBaseSoldiers() throws RuntimeException
+    {
+        PreparedStatement stmt;
+        for (ChariotArcher element : formation)
+        {
+            stmt = element.insertSoldier();
+            Jdbc.executeStatement(stmt);
+        }
     }
 }
 

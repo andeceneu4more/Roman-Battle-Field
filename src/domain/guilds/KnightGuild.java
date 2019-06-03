@@ -5,6 +5,7 @@ import domain.units.KnightUnit;
 import domain.units.Unit;
 import services.AuditLog;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,7 +42,7 @@ public class KnightGuild extends Guild
         for (i = 0; i < members.size(); i++)
         {
             wanted = members.elementAt(i);
-            if (wanted.getDiscipline() == id)
+            if (wanted.getUnitId() == id)
                 return wanted;
         }
         return null;
@@ -99,5 +100,19 @@ public class KnightGuild extends Guild
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
         AuditLog.stamp("Knight.rating");
+    }
+
+    public void writeDataBaseSoldiers()
+    {
+        try
+        {
+            Jdbc.initTable("knight", Defaults.CREATE_NEW_KNIGHT);
+            for (int i = 0; i < members.size(); i++)
+                members.elementAt(i).writeDataBaseSoldiers();
+        }
+        catch (RuntimeException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 }

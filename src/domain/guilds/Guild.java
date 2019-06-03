@@ -1,7 +1,10 @@
 package domain.guilds;
 
+import domain.individuals.Archer;
 import domain.individuals.Soldier;
 import domain.units.Unit;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import services.AuditLog;
 import tools.Enrollment;
 
@@ -122,5 +125,5 @@ public abstract class Guild
     }
     public abstract void writeSoldiers();
     public abstract void rating();
-
+    public abstract void writeDataBaseSoldiers();
 }

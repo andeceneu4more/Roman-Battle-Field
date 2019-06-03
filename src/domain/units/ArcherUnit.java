@@ -3,12 +3,17 @@ package domain.units;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.*;
+import java.sql.PreparedStatement;
 import java.util.*;
 import domain.individuals.Archer;
 import domain.individuals.Soldier;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import services.Fate;
 import services.SoldierComparator;
 import tools.Defaults;
+import tools.Jdbc;
 
 public class ArcherUnit extends Unit
 {
@@ -133,5 +138,22 @@ public class ArcherUnit extends Unit
             buffer.newLine();
         }
         return buffer;
+    }
+
+    public void writeDataBaseSoldiers() throws RuntimeException
+    {
+        PreparedStatement stmt;
+        for (Archer element : formation)
+        {
+            stmt = element.insertSoldier();
+            Jdbc.executeStatement(stmt);
+        }
+    }
+
+    public ObservableList<Archer> getAll()
+    {
+        ObservableList<Archer> all = FXCollections.observableArrayList();
+        all.addAll(formation);
+        return all;
     }
 }

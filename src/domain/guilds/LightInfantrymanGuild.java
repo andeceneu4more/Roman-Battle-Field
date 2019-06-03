@@ -5,6 +5,7 @@ import domain.units.LightInfantrymanUnit;
 import domain.units.Unit;
 import services.AuditLog;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,7 +42,7 @@ public class LightInfantrymanGuild extends Guild
         for (i = 0; i < members.size(); i++)
         {
             wanted = members.elementAt(i);
-            if (wanted.getDiscipline() == id)
+            if (wanted.getUnitId() == id)
                 return wanted;
         }
         return null;
@@ -99,6 +100,20 @@ public class LightInfantrymanGuild extends Guild
         for (int i = 0; i < members.size(); i++)
             members.elementAt(i).rating();
         AuditLog.stamp("LightInfantryman.rating");
+    }
+
+    public void writeDataBaseSoldiers()
+    {
+        try
+        {
+            Jdbc.initTable("light_infantryman", Defaults.CREATE_NEW_LIGHT);
+            for (int i = 0; i < members.size(); i++)
+                members.elementAt(i).writeDataBaseSoldiers();
+        }
+        catch (RuntimeException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 }
 

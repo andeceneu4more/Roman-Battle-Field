@@ -2,6 +2,8 @@ package domain.individuals;
 
 import tools.Defaults;
 
+import java.sql.PreparedStatement;
+
 public abstract class Soldier
 {
     protected String name;
@@ -78,6 +80,31 @@ public abstract class Soldier
         this.stamina = Defaults.STAMINA;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+    public int getStamina()
+    {
+        return stamina;
+    }
+
+    public int getXp()
+    {
+        return xp;
+    }
+
     public void nextFewYears(int years)
     {
         age += years;
@@ -90,4 +117,5 @@ public abstract class Soldier
 
     public abstract void train(double impact);
     public abstract StringBuilder getSoldierData();
+    public abstract PreparedStatement insertSoldier();
 }

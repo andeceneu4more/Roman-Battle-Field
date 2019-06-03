@@ -5,10 +5,12 @@ import domain.individuals.Soldier;
 import services.Fate;
 import services.SoldierComparator;
 import tools.Defaults;
+import tools.Jdbc;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Iterator;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.TreeSet;
 
 public class Ballista extends Unit
@@ -140,5 +142,15 @@ public class Ballista extends Unit
             buffer.newLine();
         }
         return buffer;
+    }
+
+    public void writeDataBaseSoldiers() throws  SQLException, RuntimeException {
+        PreparedStatement stmt;
+        for (Ballister element : formation)
+        {
+            stmt = element.insertSoldier();
+            stmt.setDouble(9, cooldown);
+            Jdbc.executeStatement(stmt);
+        }
     }
 }

@@ -1,11 +1,15 @@
 package domain.units;
 
+import domain.individuals.Archer;
 import domain.individuals.Soldier;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import services.Fate;
 import tools.Defaults;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public abstract class Unit
 {
@@ -14,6 +18,12 @@ public abstract class Unit
     protected long rangedStrength;
     protected double damage;
     protected int discipline;
+
+    public int getUnitId()
+    {
+        return unitId;
+    }
+
     protected int unitId;
 
     public int getDiscipline()
@@ -43,6 +53,8 @@ public abstract class Unit
     public abstract void nextFewYears(int years);
 
     public abstract BufferedWriter writeSoldiers(BufferedWriter buffer) throws IOException;
+
+    public abstract void writeDataBaseSoldiers() throws SQLException, RuntimeException;
 
     //    public abstract void decimate(int iterator);
 
